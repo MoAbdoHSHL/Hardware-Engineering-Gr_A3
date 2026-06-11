@@ -1,0 +1,510 @@
+# Compile of BCD_adder.vhd failed with 6 errors.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# 13 compiles, 1 failed with 6 errors.
+# Compile of BCD_adder.vhd failed with 1 errors.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# 13 compiles, 1 failed with 1 error.
+# Compile of BCD_adder.vhd failed with 2 errors.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# 13 compiles, 1 failed with 2 errors.
+# Compile of BCD_adder.vhd failed with 2 errors.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# 13 compiles, 1 failed with 2 errors.
+vdel -all
+vlib work
+
+vcom half_adder.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:30:04 on Jun 11,2026
+# vcom -reportprogress 300 half_adder.vhd 
+# -- Loading package STANDARD
+# -- Compiling entity half_adder
+# -- Compiling architecture Structure of half_adder
+# End time: 12:30:04 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom full_adder.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:30:04 on Jun 11,2026
+# vcom -reportprogress 300 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 12:30:04 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom ripple_carry_adder.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:30:04 on Jun 11,2026
+# vcom -reportprogress 300 ripple_carry_adder.vhd 
+# -- Loading package STANDARD
+# -- Compiling entity ripple_carry_adder
+# -- Compiling architecture structure of ripple_carry_adder
+# End time: 12:30:04 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom BCD_adder.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:30:04 on Jun 11,2026
+# vcom -reportprogress 300 BCD_adder.vhd 
+# -- Loading package STANDARD
+# -- Compiling entity bcd_adder
+# -- Compiling architecture structure of bcd_adder
+# ** Error: BCD_adder.vhd(36): Visible name 'ripple_carry_adder' is not an entity. Use expanded name.
+# ** Error: BCD_adder.vhd(51): Visible name 'ripple_carry_adder' is not an entity. Use expanded name.
+# ** Note: BCD_adder.vhd(54): VHDL Compiler exiting
+# End time: 12:30:04 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# C:/intelFPGA/20.1/modelsim_ase/win32aloem/vcom failed.
+vcom half_adder.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:32:25 on Jun 11,2026
+# vcom -reportprogress 300 half_adder.vhd 
+# -- Loading package STANDARD
+# -- Compiling entity half_adder
+# -- Compiling architecture Structure of half_adder
+# End time: 12:32:25 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom full_adder.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:32:25 on Jun 11,2026
+# vcom -reportprogress 300 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 12:32:25 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom ripple_carry_adder.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:32:25 on Jun 11,2026
+# vcom -reportprogress 300 ripple_carry_adder.vhd 
+# -- Loading package STANDARD
+# -- Compiling entity ripple_carry_adder
+# -- Compiling architecture structure of ripple_carry_adder
+# End time: 12:32:25 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom BCD_adder.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:32:25 on Jun 11,2026
+# vcom -reportprogress 300 BCD_adder.vhd 
+# -- Loading package STANDARD
+# -- Compiling entity bcd_adder
+# -- Compiling architecture structure of bcd_adder
+# End time: 12:32:26 on Jun 11,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# 13 compiles, 0 failed with no errors.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# 14 compiles, 0 failed with no errors.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# 15 compiles, 0 failed with no errors.
+vsim -gui work.multiplier_tb(test)
+# vsim -gui work.multiplier_tb(test) 
+# Start time: 12:46:10 on Jun 11,2026
+# Loading std.standard
+# Loading work.multiplier_tb(test)
+# Loading work.multiplier(structure)
+# Loading work.ripple_carry_adder(structure)
+# Loading work.full_adder(structure)
+# Loading work.half_adder(structure)
+# Trace back: Error QStructure::sort: invalid command name ""
+#   <6:C:/mtitcl/vsim/qstructure.tc_:2478: ::QStructure::sort .main_pane.structure 0 ascending
+#   <5:eval:1: ::QStructure::structsort .main_pane.structure 0 ascending
+#   <4:eval:1: ::namespace inscope ::QStructure {structsort .main_pane.structure} 0 ascending
+#   >3:proc:26: ::.main_pane.structure.interior.cs.body.struct sort 0 ascending
+#   >2:proc:10: ::.main_pane.structure.interior.cs.body.struct _initializeSortColumn
+#   <1:eval:1: ::namespace inscope ::vsimwidgets::Hierarchy {::.main_pane.structure.interior.cs.body.struct _initializeSortColumn}
+#  Trace back: invalid command name ""
+#     while executing
+# "{} idsToReferencePaths 1 {}"
+#     ("uplevel" body line 1)
+#     invoked from within
+# "uplevel 1 [lrange $args 0 end-1] [lindex $args end]"
+#     (procedure "applyToList" line 2)
+#     invoked from within
+# "applyToList $treeView idsToReferencePaths $useIds $top $expanded"
+#     (procedure "_resetTree" line 29)
+#     invoked from within
+# "_resetTree $w"
+#     (procedure "sort" line 6)
+#     invoked from within
+# "sort $w $col $dir"
+#     (procedure "structsort" line 9)
+#     invoked from within
+# "structsort .main_pane.structure 0 ascending"
+#     (in namespace inscope "::QStructure" script line 1)
+#     invoked from within
+# "namespace inscope ::QStructure {structsort .main_pane.structure} 0 ascending"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $itk_option(-sortcommand) $column $dir"
+#     (object "::.main_pane.structure.interior.cs.body.struct" method "::vsimwidgets::Hierarchy::sort" body line 26)
+#     invoked from within
+# "sort $sortIdx $dir"
+#     (object "::.main_pane.structure.interior.cs.body.struct" method "::vsimwidgets::Hierarchy::_initializeSortColumn" body line 10)
+#     invoked from within
+# "::.main_pane.structure.interior.cs.body.struct _initializeSortColumn"
+#     (in namespace inscope "::vsimwidgets::Hierarchy" script line 1)
+#     invoked from within
+# "namespace inscope ::vsimwidgets::Hierarchy {::.main_pane.structure.interior.cs.body.struct _initializeSortColumn}"
+#     ("after" script)
+#    <2:C:/intelFPGA/20.1/modelsim_ase/win32aloem/tk8.6/bgerror.tcl:106: ::tkerror {invalid command name ""}
+#    <1:eval:1: ::tk::dialog::error::bgerror {invalid command name ""}
+add wave -position end  sim:/multiplier_tb/a
+add wave -position end  sim:/multiplier_tb/b
+add wave -position end  sim:/multiplier_tb/p
+run -all
+# ** Note: All multiplier tests passed.
+#    Time: 50 ns  Iteration: 0  Instance: /multiplier_tb
+quit -sim
+# End time: 12:50:03 on Jun 11,2026, Elapsed time: 0:03:53
+# Errors: 0, Warnings: 13
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# 16 compiles, 0 failed with no errors.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# 17 compiles, 0 failed with no errors.
+vsim -gui work.alu_tb(test)
+# vsim -gui work.alu_tb(test) 
+# Start time: 12:59:16 on Jun 11,2026
+# Loading std.standard
+# Loading work.alu_tb(test)
+# Loading work.alu(structure)
+# Loading work.cr_add_sub(structure)
+# ** Fatal: (vsim-3817) Port "mode" of entity "cr_add_sub" is not in the component being instantiated.
+#    Time: 0 ps  Iteration: 0  Instance: /alu_tb/DUT/ADDSUB File: C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd Line: 5
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 12:59:17 on Jun 11,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 5
+vsim -gui work.alu_tb(test)
+# vsim -gui work.alu_tb(test) 
+# Start time: 13:01:54 on Jun 11,2026
+# Loading std.standard
+# Loading work.alu_tb(test)
+# Loading work.alu(structure)
+# Loading work.cr_add_sub(structure)
+# ** Fatal: (vsim-3817) Port "mode" of entity "cr_add_sub" is not in the component being instantiated.
+#    Time: 0 ps  Iteration: 0  Instance: /alu_tb/DUT/ADDSUB File: C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd Line: 5
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 13:01:55 on Jun 11,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 1
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# 17 compiles, 0 failed with no errors.
+vsim -gui work.alu_tb(test)
+# vsim -gui work.alu_tb(test) 
+# Start time: 13:04:20 on Jun 11,2026
+# Loading std.standard
+# Loading work.alu_tb(test)
+# Loading work.alu(structure)
+# Loading work.cr_add_sub(structure)
+# Loading work.ripple_carry_adder(structure)
+# Loading work.full_adder(structure)
+# Loading work.half_adder(structure)
+# Loading work.multiplier(structure)
+add wave -position end  sim:/alu_tb/a
+add wave -position end  sim:/alu_tb/b
+add wave -position end  sim:/alu_tb/op
+add wave -position end  sim:/alu_tb/result
+add wave -position end  sim:/alu_tb/carry
+run -all
+# ** Note: All ALU tests passed.
+#    Time: 70 ns  Iteration: 0  Instance: /alu_tb
+quit -sim
+# End time: 13:05:33 on Jun 11,2026, Elapsed time: 0:01:13
+# Errors: 0, Warnings: 2
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# Compile of registier_8bit.vhd failed with 1 errors.
+# Compile of register_8bit_tb.vhd was successful.
+# 19 compiles, 1 failed with 1 error.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# Compile of registier_8bit.vhd failed with 1 errors.
+# Compile of register_8bit_tb.vhd was successful.
+# 19 compiles, 1 failed with 1 error.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# Compile of registier_8bit.vhd failed with 1 errors.
+# Compile of register_8bit_tb.vhd was successful.
+# 19 compiles, 1 failed with 1 error.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# Compile of registier_8bit.vhd failed with 1 errors.
+# Compile of register_8bit_tb.vhd was successful.
+# 19 compiles, 1 failed with 1 error.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# Compile of registier_8bit.vhd was successful.
+# Compile of register_8bit_tb.vhd was successful.
+# 19 compiles, 0 failed with no errors.
+vsim -gui work.reg_tb(test)
+# vsim -gui work.reg_tb(test) 
+# Start time: 13:24:27 on Jun 11,2026
+# Loading std.standard
+# Loading work.reg_tb(test)
+# Loading work.result_register(behavior)
+add wave -position end  sim:/reg_tb/clk
+add wave -position end  sim:/reg_tb/rst
+add wave -position end  sim:/reg_tb/en
+add wave -position end  sim:/reg_tb/d
+add wave -position end  sim:/reg_tb/q
+run -all
+# Break key hit
+# Simulation stop requested.
+quit -sim
+# End time: 13:25:51 on Jun 11,2026, Elapsed time: 0:01:24
+# Errors: 0, Warnings: 10
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# Compile of registier_8bit.vhd was successful.
+# Compile of register_8bit_tb.vhd was successful.
+# Compile of register_file.vhd was successful.
+# Compile of register_file_tb.vhd was successful.
+# 21 compiles, 0 failed with no errors.
+vsim -gui work.register_file_tb(test)
+# vsim -gui work.register_file_tb(test) 
+# Start time: 16:20:58 on Jun 11,2026
+# Loading std.standard
+# Loading work.register_file_tb(test)
+# Loading work.register_file(behavior)
+add wave -position end  sim:/register_file_tb/clk
+add wave -position end  sim:/register_file_tb/rst
+add wave -position end  sim:/register_file_tb/write_enable
+add wave -position end  sim:/register_file_tb/read_addr_a
+add wave -position end  sim:/register_file_tb/read_addr_b
+add wave -position end  sim:/register_file_tb/write_addr
+add wave -position end  sim:/register_file_tb/write_data
+add wave -position end  sim:/register_file_tb/data_a
+add wave -position end  sim:/register_file_tb/data_b
+run
+# Load canceled
+run
+# Break key hit
+run
+run
+run -all
+# ** Note: All register file tests passed.
+#    Time: 90 ns  Iteration: 0  Instance: /register_file_tb
+# Break key hit
+# Break in Process clk_process at C:/git/Hardware-Engineering-Gr_A3/cpu/register_file_tb.vhd line 38
+quit -sim
+# End time: 16:24:03 on Jun 11,2026, Elapsed time: 0:03:05
+# Errors: 0, Warnings: 4
