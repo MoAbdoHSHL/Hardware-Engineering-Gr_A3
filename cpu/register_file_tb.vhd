@@ -24,7 +24,7 @@ begin
             rst          => rst,
             write_enable => write_enable,
             read_addr_a  => read_addr_a,
-            read_addr_b  => read_addr_b,
+            read_addr_b  => read_addr_b, 
             write_addr   => write_addr,
             write_data   => write_data,
             data_a       => data_a,

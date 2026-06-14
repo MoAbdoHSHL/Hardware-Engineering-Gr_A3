@@ -10,8 +10,8 @@ z2
 cModel Technology
 Z0 dC:/git/Hardware-Engineering-Gr_A3/cpu
 Ealu
-Z1 w1781175697
-!i122 210
+Z1 w1781452226
+!i122 303
 R0
 Z2 8C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit.vhd
 Z3 FC:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit.vhd
@@ -21,9 +21,9 @@ VN[KaBlM>e[mZ1bJ6JcE_g1
 !s100 F9aN5Ino9i_E=g98i0FDH1
 Z4 OV;C;2020.1;71
 32
-Z5 !s110 1781187642
+Z5 !s110 1781452357
 !i10b 1
-Z6 !s108 1781187642.000000
+Z6 !s108 1781452357.000000
 Z7 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit.vhd|
 Z8 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit.vhd|
 !i113 1
@@ -31,11 +31,11 @@ Z9 o-work work -2002 -explicit
 Z10 tExplicit 1 CvgOpt 0
 Astructure
 Z11 DEx4 work 3 alu 0 22 N[KaBlM>e[mZ1bJ6JcE_g1
-!i122 210
-l38
-Z12 L13 71
-V`>[YSbLV5QC1Go1ERdhL10
-!s100 3J2nm4m==hQc2m<JRo11]0
+!i122 303
+l47
+L13 87
+V5maaP?kL72_k9^CzOMdE33
+!s100 4:ZU2CK[mEj6n4b2XoDSl2
 R4
 32
 R5
@@ -47,7 +47,7 @@ R8
 R9
 R10
 Ealu_4bit
-Z13 w1781175327
+Z12 w1781175327
 !i122 65
 R0
 R2
@@ -58,9 +58,9 @@ V6f;K9^co:_N8blKLTUUDA3
 !s100 ?=]d0URNHEFZo89_PmUXF2
 R4
 32
-Z14 !s110 1781175331
+Z13 !s110 1781175331
 !i10b 1
-Z15 !s108 1781175331.000000
+Z14 !s108 1781175331.000000
 R7
 R8
 !i113 1
@@ -70,435 +70,510 @@ Astructure
 DEx4 work 8 alu_4bit 0 22 6f;K9^co:_N8blKLTUUDA3
 !i122 65
 l38
-R12
+L13 71
 Vo0I@WmDZ6M54:V:fcRHK?0
 !s100 :D55bn[I]HUIBfzkoIX<20
 R4
 32
-R14
+R13
 !i10b 1
-R15
+R14
 R7
 R8
 !i113 1
 R9
 R10
 Ealu_tb
-Z16 w1781175519
-!i122 211
+Z15 w1781452348
+!i122 304
 R0
-Z17 8C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit_tb.vhd
-Z18 FC:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit_tb.vhd
+Z16 8C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit_tb.vhd
+Z17 FC:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit_tb.vhd
 l0
 L1 1
 VGjPUCzS4J;I]GGa2hF9Fe3
 !s100 BkE^Tfz]?>?IIINU3W7lV2
 R4
 32
-Z19 !s110 1781187643
+R5
 !i10b 1
-Z20 !s108 1781187643.000000
-Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit_tb.vhd|
-Z22 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit_tb.vhd|
+R6
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit_tb.vhd|
+Z19 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\alu_4bit_tb.vhd|
 !i113 1
 R9
 R10
 Atest
 R11
 DEx4 work 6 alu_tb 0 22 GjPUCzS4J;I]GGa2hF9Fe3
-!i122 211
+!i122 304
 l12
-L4 92
-VMOAiDQZj^;NIHckR_4m;D2
-!s100 eXba6dzHV74V>^d<Z]XJ@1
+L4 98
+VVWM3cKD@j>OTPYOQNjZ460
+!s100 CONf4IGD=9izlaK0R]oQe2
 R4
 32
-R19
+R5
 !i10b 1
-R20
-R21
-R22
+R6
+R18
+R19
 !i113 1
 R9
 R10
 Ebcd_adder
-Z23 w1781173935
-!i122 195
+Z20 w1781173935
+!i122 288
 R0
-Z24 8C:\git\Hardware-Engineering-Gr_A3\cpu\BCD_adder.vhd
-Z25 FC:\git\Hardware-Engineering-Gr_A3\cpu\BCD_adder.vhd
+Z21 8C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder.vhd
+Z22 FC:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder.vhd
 l0
 L1 1
 V2[N08i_z7[LKX4c1X8`J:2
 !s100 4a[;MYaVP_H<TN?YF7ceV0
 R4
 32
-Z26 !s110 1781187641
+Z23 !s110 1781452355
 !i10b 1
-Z27 !s108 1781187641.000000
-Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\BCD_adder.vhd|
-Z29 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\BCD_adder.vhd|
+Z24 !s108 1781452355.000000
+Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder.vhd|
+Z26 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder.vhd|
 !i113 1
 R9
 R10
 Astructure
-Z30 DEx4 work 9 bcd_adder 0 22 2[N08i_z7[LKX4c1X8`J:2
-!i122 195
+Z27 DEx4 work 9 bcd_adder 0 22 2[N08i_z7[LKX4c1X8`J:2
+!i122 288
 l27
 L11 48
 VL3l6;[K^eLBf;62l?3N1:3
 !s100 iMEo2WJa@EQ]B`S6D21@O0
 R4
 32
-R26
+R23
 !i10b 1
-R27
-R28
-R29
+R24
+R25
+R26
 !i113 1
 R9
 R10
 Ebcd_adder_tb
-Z31 w1778509592
-!i122 196
+Z28 w1778509592
+!i122 289
 R0
-Z32 8C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder_tb.vhd
-Z33 FC:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder_tb.vhd
+Z29 8C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder_tb.vhd
+Z30 FC:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder_tb.vhd
 l0
 L1 1
 Von]Qj06;2W`hi?=REZ>Do3
 !s100 f^BS@QoYNdWz9fPQ3^LCk1
 R4
 32
-R26
+R23
 !i10b 1
-R27
-Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder_tb.vhd|
-Z35 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder_tb.vhd|
+R24
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder_tb.vhd|
+Z32 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder_tb.vhd|
 !i113 1
 R9
 R10
 Atest
-R30
+R27
 DEx4 work 12 bcd_adder_tb 0 22 on]Qj06;2W`hi?=REZ>Do3
-!i122 196
+!i122 289
 l12
 L4 72
 V`Fnnf11]K[3:YQ4[f]CSU3
 !s100 l?N3mPBaiBSeK]?2<Wz_P0
 R4
 32
-R26
+R23
 !i10b 1
-R27
-R34
-R35
+R24
+R31
+R32
 !i113 1
 R9
 R10
 Eclk_divider
-Z36 w1781116697
-!i122 197
+Z33 w1781116697
+!i122 290
 R0
-Z37 8C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd
-Z38 FC:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd
+Z34 8C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd
+Z35 FC:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd
 l0
 L1 1
 VeW<Af^7gFEbQ12P]D:LKC1
 !s100 UR@K29B4TUJh@[c]JFnCL2
 R4
 32
-R26
+R23
 !i10b 1
-R27
-Z39 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd|
-Z40 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd|
+R24
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd|
+Z37 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd|
 !i113 1
 R9
 R10
 Abehavior
-Z41 DEx4 work 11 clk_divider 0 22 eW<Af^7gFEbQ12P]D:LKC1
-!i122 197
+Z38 DEx4 work 11 clk_divider 0 22 eW<Af^7gFEbQ12P]D:LKC1
+!i122 290
 l12
 L9 29
 V2]G1UzjadR3Nl2EUZ7=CR3
 !s100 FNBLEVogQO74RbO6AV^P@2
 R4
 32
-R26
+R23
 !i10b 1
-R27
-R39
-R40
+R24
+R36
+R37
 !i113 1
 R9
 R10
 Eclk_divider_tb
-Z42 w1781116747
-!i122 198
+Z39 w1781116747
+!i122 291
 R0
-Z43 8C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider_tb.vhd
-Z44 FC:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider_tb.vhd
+Z40 8C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider_tb.vhd
+Z41 FC:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider_tb.vhd
 l0
 L2 1
 V7916Zh9Qdg7jj[YYCj]kQ2
 !s100 U@?oMe25F`V4O;5U4[ok>3
 R4
 32
-R26
+R23
 !i10b 1
-R27
-Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider_tb.vhd|
-Z46 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider_tb.vhd|
+R24
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider_tb.vhd|
+Z43 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider_tb.vhd|
 !i113 1
 R9
 R10
 Atest
-R41
+R38
 DEx4 work 14 clk_divider_tb 0 22 7916Zh9Qdg7jj[YYCj]kQ2
-!i122 198
+!i122 291
 l11
 L5 39
 V4@1[RlnLCUPTf3QYHl62Q1
 !s100 fn<VcFgR>j>a>5;zCjio@3
 R4
 32
-R26
+R23
 !i10b 1
-R27
-R45
-R46
+R24
+R42
+R43
 !i113 1
 R9
 R10
 Ecr_add_sub
-Z47 w1778164856
-!i122 199
+Z44 w1778164856
+!i122 292
 R0
-Z48 8C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd
-Z49 FC:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd
+Z45 8C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd
+Z46 FC:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd
 l0
 L1 1
 VWhHe@?IPWfBRT7T<n3FMO0
 !s100 j:1jgQ3QkFKBCFB55<g2f3
 R4
 32
-R26
+R23
 !i10b 1
-R27
-Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd|
-Z51 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd|
+R24
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd|
+Z48 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd|
 !i113 1
 R9
 R10
 Astructure
 DEx4 work 10 cr_add_sub 0 22 WhHe@?IPWfBRT7T<n3FMO0
-!i122 199
+!i122 292
 l26
 L11 37
 VSjdEkBlz2l@CiS8Z8B2j<2
 !s100 eIIeOeIEW>B7;5lHfI3g<1
 R4
 32
-R26
+R23
 !i10b 1
-R27
-R50
-R51
+R24
+R47
+R48
 !i113 1
 R9
 R10
 Ecr_add_sub_tb
-Z52 w1778164958
-!i122 200
+Z49 w1778164958
+!i122 293
 R0
-Z53 8C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub_tb.vhd
-Z54 FC:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub_tb.vhd
+Z50 8C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub_tb.vhd
+Z51 FC:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub_tb.vhd
 l0
 L1 1
 V?kNnIc?RQFOZoi:^^6W0n0
 !s100 I2dEDUZc[:;XURdXN1[FD3
 R4
 32
-R26
+Z52 !s110 1781452356
 !i10b 1
-R27
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub_tb.vhd|
-Z56 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub_tb.vhd|
+R24
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub_tb.vhd|
+Z54 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub_tb.vhd|
 !i113 1
 R9
 R10
 Astructure
 DEx4 work 13 cr_add_sub_tb 0 22 ?kNnIc?RQFOZoi:^^6W0n0
-!i122 200
+!i122 293
 l22
 L4 68
 V@O6_ZXB5khSaCKf[GS@@P3
 !s100 A>>l@cHUcN`9ZITf0RkzB1
 R4
 32
-R26
+R52
 !i10b 1
-R27
-R55
-R56
+R24
+R53
+R54
+!i113 1
+R9
+R10
+Edivider
+Z55 w1781191326
+!i122 311
+R0
+Z56 8C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd
+Z57 FC:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd
+l0
+L1 1
+V;UT7Om:nd7>C7N[H_L8?I2
+!s100 FZ]aD@8aGaI22a`M3EQ4i0
+R4
+32
+Z58 !s110 1781452358
+!i10b 1
+Z59 !s108 1781452358.000000
+Z60 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd|
+Z61 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd|
+!i113 1
+R9
+R10
+Astructure
+Z62 DEx4 work 7 divider 0 22 ;UT7Om:nd7>C7N[H_L8?I2
+!i122 311
+l27
+L9 94
+V30jOdJF`g7]8^PBNU7R^M1
+!s100 jQX04ifko@gBlj8[VIFHe1
+R4
+32
+R58
+!i10b 1
+R59
+R60
+R61
+!i113 1
+R9
+R10
+Edivider_tb
+Z63 w1781191403
+!i122 312
+R0
+Z64 8C:/git/Hardware-Engineering-Gr_A3/cpu/divider_tb.vhd
+Z65 FC:/git/Hardware-Engineering-Gr_A3/cpu/divider_tb.vhd
+l0
+L1 1
+V@VG6RX@@if]D:GH55Q8zX0
+!s100 BZjTTgU9^kWZ<N3EJ_F^l2
+R4
+32
+R58
+!i10b 1
+R59
+Z66 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/divider_tb.vhd|
+!s107 C:/git/Hardware-Engineering-Gr_A3/cpu/divider_tb.vhd|
+!i113 1
+R9
+R10
+Atest
+R62
+Z67 DEx4 work 10 divider_tb 0 22 @VG6RX@@if]D:GH55Q8zX0
+!i122 312
+l10
+Z68 L4 80
+Z69 V3QZ>VfkRK3_f[4H?Zzo[J2
+Z70 !s100 Gczz5oEgF8FX^SN:K2<?z0
+R4
+32
+R58
+!i10b 1
+R59
+R66
+Z71 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/divider_tb.vhd|
 !i113 1
 R9
 R10
 Efull_adder
-Z57 w1778155611
-!i122 201
+Z72 w1778155611
+!i122 294
 R0
-Z58 8C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd
-Z59 FC:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd
+Z73 8C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd
+Z74 FC:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd
 l0
 L1 1
 VASLTFW8OcaN?9zD:Q1?_h2
 !s100 SK7RhzKH1C2N=4@[oZa9^1
 R4
 32
-R5
+R52
 !i10b 1
-R27
-Z60 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd|
-Z61 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd|
+Z75 !s108 1781452356.000000
+Z76 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd|
+Z77 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd|
 !i113 1
 R9
 R10
 Astructure
 DEx4 work 10 full_adder 0 22 ASLTFW8OcaN?9zD:Q1?_h2
-!i122 201
+!i122 294
 l17
 L6 30
 V]0=mPC?3^n^CfLZN=?ITW3
 !s100 8EnZ^IXW21h:6U>PD7QNQ1
 R4
 32
-R5
+R52
 !i10b 1
-R27
-R60
-R61
+R75
+R76
+R77
 !i113 1
 R9
 R10
 Efull_adder_tb
-Z62 w1778155916
-!i122 202
+Z78 w1778155916
+!i122 295
 R0
-Z63 8C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_tb.vhd
-Z64 FC:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_tb.vhd
+Z79 8C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_tb.vhd
+Z80 FC:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_tb.vhd
 l0
 L1 1
 VXTV=1e?ZlZd99e1RLGC?B3
 !s100 ^_=SghD_S_hH2FzT[31;Y2
 R4
 32
-R5
+R52
 !i10b 1
-R6
-Z65 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_tb.vhd|
-Z66 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_tb.vhd|
+R75
+Z81 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_tb.vhd|
+Z82 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_tb.vhd|
 !i113 1
 R9
 R10
 Astructural
 DEx4 work 13 full_adder_tb 0 22 XTV=1e?ZlZd99e1RLGC?B3
-!i122 202
+!i122 295
 l14
 L4 38
 V8<XA@hTQ9gfZ>a6fS277e1
 !s100 z=;HV`BM>o4Zjhf<8ZggA1
 R4
 32
-R5
+R52
 !i10b 1
-R6
-R65
-R66
+R75
+R81
+R82
 !i113 1
 R9
 R10
 Efull_adder_truth
-Z67 w1778667737
-!i122 203
+Z83 w1778667737
+!i122 296
 R0
-Z68 8C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd
-Z69 FC:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd
+Z84 8C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd
+Z85 FC:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd
 l0
 L1 1
 V175MGeW]izB9=XaLzbLGP0
 !s100 ]K<9fjWbPO2]eRcOk7W6=0
 R4
 32
-R5
+R52
 !i10b 1
-R6
-Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd|
-Z71 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd|
+R75
+Z86 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd|
+Z87 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd|
 !i113 1
 R9
 R10
 Astructure
 DEx4 work 16 full_adder_truth 0 22 175MGeW]izB9=XaLzbLGP0
-!i122 203
+!i122 296
 l7
 L6 22
 VN55mhkLjO8M]0[:VmF2UX0
 !s100 LSen^XN]Pm@ChJFGkGc`^0
 R4
 32
-R5
+R52
 !i10b 1
-R6
-R70
-R71
+R75
+R86
+R87
 !i113 1
 R9
 R10
 Ehalf_adder
-Z72 w1778145230
-!i122 205
+Z88 w1778145230
+!i122 298
 R0
-Z73 8C:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd
-Z74 FC:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd
+Z89 8C:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd
+Z90 FC:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd
 l0
 L1 1
 VXUD[S@mcoSJVYV72>Yz6`2
 !s100 UnSEBZQC^bPn>CeCOOHWB0
 R4
 32
-R5
+R52
 !i10b 1
-R6
-Z75 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd|
-Z76 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd|
+R75
+Z91 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd|
+Z92 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd|
 !i113 1
 R9
 R10
 Astructure
 DEx4 work 10 half_adder 0 22 XUD[S@mcoSJVYV72>Yz6`2
-!i122 205
+!i122 298
 l9
 L8 5
 VCFnBz=`U`L2B^boP3YJSa1
 !s100 `[I0[ab93ikXIB3PTc]1m3
 R4
 32
-R5
+R52
 !i10b 1
-R6
 R75
-R76
+R91
+R92
 !i113 1
 R9
 R10
 Emultiplier
-Z77 w1781174643
-!i122 208
+Z93 w1781174643
+!i122 301
 R0
-Z78 8C:\git\Hardware-Engineering-Gr_A3\cpu\multiplier_4bit.vhd
-Z79 FC:\git\Hardware-Engineering-Gr_A3\cpu\multiplier_4bit.vhd
+Z94 8C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd
+Z95 FC:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd
 l0
 L1 1
 VPh9<X=Y:ZnhanCS[Ud57j2
@@ -507,15 +582,15 @@ R4
 32
 R5
 !i10b 1
-R6
-Z80 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\multiplier_4bit.vhd|
-Z81 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\multiplier_4bit.vhd|
+R75
+Z96 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd|
+Z97 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd|
 !i113 1
 R9
 R10
 Astructure
-Z82 DEx4 work 10 multiplier 0 22 Ph9<X=Y:ZnhanCS[Ud57j2
-!i122 208
+Z98 DEx4 work 10 multiplier 0 22 Ph9<X=Y:ZnhanCS[Ud57j2
+!i122 301
 l30
 L9 85
 Vc`RGobL7jfmf^IHfQgY930
@@ -524,18 +599,18 @@ R4
 32
 R5
 !i10b 1
-R6
-R80
-R81
+R75
+R96
+R97
 !i113 1
 R9
 R10
 Emultiplier_tb
-Z83 w1781174745
-!i122 209
+Z99 w1781174745
+!i122 302
 R0
-Z84 8C:\git\Hardware-Engineering-Gr_A3\cpu\multiplier_4bit_tb.vhd
-Z85 FC:\git\Hardware-Engineering-Gr_A3\cpu\multiplier_4bit_tb.vhd
+Z100 8C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit_tb.vhd
+Z101 FC:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit_tb.vhd
 l0
 L1 1
 VI[GDaK<aQ_6Cjo4o24f<b3
@@ -545,15 +620,15 @@ R4
 R5
 !i10b 1
 R6
-Z86 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\multiplier_4bit_tb.vhd|
-Z87 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\multiplier_4bit_tb.vhd|
+Z102 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit_tb.vhd|
+Z103 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit_tb.vhd|
 !i113 1
 R9
 R10
 Atest
-R82
+R98
 DEx4 work 13 multiplier_tb 0 22 I[GDaK<aQ_6Cjo4o24f<b3
-!i122 209
+!i122 302
 l10
 L4 64
 VeN0@g<?2DI]EgzS?>dP9^0
@@ -563,8 +638,83 @@ R4
 R5
 !i10b 1
 R6
-R86
-R87
+R102
+R103
+!i113 1
+R9
+R10
+Eprogram_counter
+Z104 w1781188855
+!i122 309
+R0
+Z105 8C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter.vhd
+Z106 FC:/git/Hardware-Engineering-Gr_A3/cpu/program_counter.vhd
+l0
+L2 1
+VFbY<JO29;`hDRSXM1bL721
+!s100 ?UC8ma;Je7:mOc4MXF2BR0
+R4
+32
+R5
+!i10b 1
+R6
+Z107 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter.vhd|
+Z108 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter.vhd|
+!i113 1
+R9
+R10
+Abehavior
+Z109 DEx4 work 15 program_counter 0 22 FbY<JO29;`hDRSXM1bL721
+!i122 309
+l13
+L11 36
+VmXLiIOlY?<U_G`Q^cMS6a3
+!s100 izalmXWR31gYdX?fAhaI@3
+R4
+32
+R5
+!i10b 1
+R6
+R107
+R108
+!i113 1
+R9
+R10
+Eprogram_counter_tb
+Z110 w1781188921
+!i122 310
+R0
+Z111 8C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter_tb.vhd
+Z112 FC:/git/Hardware-Engineering-Gr_A3/cpu/program_counter_tb.vhd
+l0
+L1 1
+Vn1U<YaG76J]HL[Ud0hf4S3
+!s100 k77Cm<W;[[FWB[OR?RYn13
+R4
+32
+R58
+!i10b 1
+R6
+Z113 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter_tb.vhd|
+Z114 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter_tb.vhd|
+!i113 1
+R9
+R10
+Atest
+R109
+DEx4 work 18 program_counter_tb 0 22 n1U<YaG76J]HL[Ud0hf4S3
+!i122 310
+l11
+L4 79
+V5H7LTQUi9BaailfBPW4462
+!s100 8`2T1M:BOX?<Roa135B]33
+R4
+32
+R58
+!i10b 1
+R6
+R113
+R114
 !i113 1
 R9
 R10
@@ -572,8 +722,8 @@ Ereg
 w1781176158
 !i122 174
 R0
-Z88 8C:\git\Hardware-Engineering-Gr_A3\cpu\registier_8bit.vhd
-Z89 FC:\git\Hardware-Engineering-Gr_A3\cpu\registier_8bit.vhd
+8C:\git\Hardware-Engineering-Gr_A3\cpu\registier_8bit.vhd
+FC:\git\Hardware-Engineering-Gr_A3\cpu\registier_8bit.vhd
 l0
 L1 1
 Ve?0]g[QkjiU06n;1CXPfg2
@@ -583,225 +733,39 @@ R4
 !s110 1781176377
 !i10b 1
 !s108 1781176377.000000
-Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\registier_8bit.vhd|
-Z91 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\registier_8bit.vhd|
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\registier_8bit.vhd|
+!s107 C:\git\Hardware-Engineering-Gr_A3\cpu\registier_8bit.vhd|
 !i113 1
 R9
 R10
 Ereg_tb
-Z92 w1781177034
-!i122 213
+Z115 w1781177034
+!i122 306
 R0
-Z93 8C:\git\Hardware-Engineering-Gr_A3\cpu\register_8bit_tb.vhd
-Z94 FC:\git\Hardware-Engineering-Gr_A3\cpu\register_8bit_tb.vhd
+Z116 8C:/git/Hardware-Engineering-Gr_A3/cpu/register_8bit_tb.vhd
+Z117 FC:/git/Hardware-Engineering-Gr_A3/cpu/register_8bit_tb.vhd
 l0
 L2 1
 Vf5>ZG6g1JaEZ[B7=>2Smg0
 !s100 AI?Pf:?oNm1PmfFM>]Y2W0
 R4
 32
-R19
+R5
 !i10b 1
-R20
-Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\register_8bit_tb.vhd|
-Z96 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\register_8bit_tb.vhd|
+R6
+Z118 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/register_8bit_tb.vhd|
+Z119 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/register_8bit_tb.vhd|
 !i113 1
 R9
 R10
 Atest
-Z97 DEx4 work 15 result_register 0 22 Qo2[MNc6mYR`BbWog5jlY2
+Z120 DEx4 work 15 result_register 0 22 Qo2[MNc6mYR`BbWog5jlY2
 DEx4 work 6 reg_tb 0 22 f5>ZG6g1JaEZ[B7=>2Smg0
-!i122 213
+!i122 306
 l14
 L5 58
 VD5SVigWELjiWRRTlcGnZS2
 !s100 bhK3e<eU_;izDLDUPi3h70
-R4
-32
-R19
-!i10b 1
-R20
-R95
-R96
-!i113 1
-R9
-R10
-Eregister_file
-Z98 w1781187461
-!i122 214
-R0
-Z99 8C:\git\Hardware-Engineering-Gr_A3\cpu\register_file.vhd
-Z100 FC:\git\Hardware-Engineering-Gr_A3\cpu\register_file.vhd
-l0
-L1 1
-Vn@W0e@oaCLB>Ch:7=oT3h2
-!s100 NXhAfC0H;=cmGBCJAl5760
-R4
-32
-R19
-!i10b 1
-R20
-Z101 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\register_file.vhd|
-Z102 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\register_file.vhd|
-!i113 1
-R9
-R10
-Abehavior
-Z103 DEx4 work 13 register_file 0 22 n@W0e@oaCLB>Ch:7=oT3h2
-!i122 214
-l25
-L18 83
-VK_O=HIF1Rh`MVFjC[eAL?0
-!s100 ZI0?WH<Do[JP42zk[dzVE2
-R4
-32
-R19
-!i10b 1
-R20
-R101
-R102
-!i113 1
-R9
-R10
-Eregister_file_tb
-Z104 w1781187636
-!i122 215
-R0
-Z105 8C:\git\Hardware-Engineering-Gr_A3\cpu\register_file_tb.vhd
-Z106 FC:\git\Hardware-Engineering-Gr_A3\cpu\register_file_tb.vhd
-l0
-L1 1
-VQ4BMlOG6TABI6K6>hT69A3
-!s100 cW6Jh_K?lo2abdm:3Eo]10
-R4
-32
-R19
-!i10b 1
-R20
-Z107 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\register_file_tb.vhd|
-!s107 C:\git\Hardware-Engineering-Gr_A3\cpu\register_file_tb.vhd|
-!i113 1
-R9
-R10
-Atest
-R103
-DEx4 work 16 register_file_tb 0 22 Q4BMlOG6TABI6K6>hT69A3
-!i122 215
-l19
-L4 101
-VY`I=C1P^BegIe]J3SXUOm0
-!s100 BScbU^`[;jk:;jaOd<5k03
-R4
-32
-R19
-!i10b 1
-R20
-R107
-Z108 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\register_file_tb.vhd|
-!i113 1
-R9
-R10
-Eresult_register
-Z109 w1781177011
-!i122 212
-R0
-R88
-R89
-l0
-L1 1
-VQo2[MNc6mYR`BbWog5jlY2
-!s100 2KV1ol<b]02>m<;BDT6l>2
-R4
-32
-R19
-!i10b 1
-R20
-R90
-R91
-!i113 1
-R9
-R10
-Abehavior
-R97
-!i122 212
-l12
-L11 13
-Ve1lTQKDlj3SKW6bEFVi?D2
-!s100 i2@_FN0^1T92lV627K;9A0
-R4
-32
-R19
-!i10b 1
-R20
-R90
-R91
-!i113 1
-R9
-R10
-Eripple_carry_adder
-Z110 w1778511151
-!i122 206
-R0
-Z111 8C:\git\Hardware-Engineering-Gr_A3\cpu\ripple_carry_adder.vhd
-Z112 FC:\git\Hardware-Engineering-Gr_A3\cpu\ripple_carry_adder.vhd
-l0
-L1 1
-VSn_4]lZjWGCcnQR30[0GI0
-!s100 1g;HLU0NDj?=`V_PXgI?01
-R4
-32
-R5
-!i10b 1
-R6
-Z113 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\git\Hardware-Engineering-Gr_A3\cpu\ripple_carry_adder.vhd|
-Z114 !s107 C:\git\Hardware-Engineering-Gr_A3\cpu\ripple_carry_adder.vhd|
-!i113 1
-R9
-R10
-Astructure
-DEx4 work 18 ripple_carry_adder 0 22 Sn_4]lZjWGCcnQR30[0GI0
-!i122 206
-l18
-L10 46
-Vj[FAb6>D`V_lVA=bFM3>[1
-!s100 74efao9o_6FCMLXdR0C5l3
-R4
-32
-R5
-!i10b 1
-R6
-R113
-R114
-!i113 1
-R9
-R10
-Eripple_carry_adder_tb
-Z115 w1778513511
-!i122 207
-R0
-Z116 8C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder_tb.vhd
-Z117 FC:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder_tb.vhd
-l0
-L1 1
-Vn0<[_S9zL3GO<ZB_3BgYC2
-!s100 l[:ZbmGTQm:Z@OL]FNB^_2
-R4
-32
-R5
-!i10b 1
-R6
-Z118 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder_tb.vhd|
-Z119 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder_tb.vhd|
-!i113 1
-R9
-R10
-Astructure
-DEx4 work 21 ripple_carry_adder_tb 0 22 n0<[_S9zL3GO<ZB_3BgYC2
-!i122 207
-l22
-L4 62
-VE;b2BP_kS[:NzBZRO<LWP2
-!s100 7?d@?^n[`5CGa=04:MG9P3
 R4
 32
 R5
@@ -812,40 +776,226 @@ R119
 !i113 1
 R9
 R10
-Etb_half_adder
-Z120 w1778155485
-!i122 204
+Eregister_file
+Z121 w1781187461
+!i122 307
 R0
-Z121 8C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd
-Z122 FC:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd
+Z122 8C:/git/Hardware-Engineering-Gr_A3/cpu/register_file.vhd
+Z123 FC:/git/Hardware-Engineering-Gr_A3/cpu/register_file.vhd
+l0
+L1 1
+Vn@W0e@oaCLB>Ch:7=oT3h2
+!s100 NXhAfC0H;=cmGBCJAl5760
+R4
+32
+R5
+!i10b 1
+R6
+Z124 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/register_file.vhd|
+Z125 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/register_file.vhd|
+!i113 1
+R9
+R10
+Abehavior
+Z126 DEx4 work 13 register_file 0 22 n@W0e@oaCLB>Ch:7=oT3h2
+!i122 307
+l25
+L18 83
+VK_O=HIF1Rh`MVFjC[eAL?0
+!s100 ZI0?WH<Do[JP42zk[dzVE2
+R4
+32
+R5
+!i10b 1
+R6
+R124
+R125
+!i113 1
+R9
+R10
+Eregister_file_tb
+Z127 w1781188969
+!i122 308
+R0
+Z128 8C:/git/Hardware-Engineering-Gr_A3/cpu/register_file_tb.vhd
+Z129 FC:/git/Hardware-Engineering-Gr_A3/cpu/register_file_tb.vhd
+l0
+L1 1
+VQ4BMlOG6TABI6K6>hT69A3
+!s100 cW6Jh_K?lo2abdm:3Eo]10
+R4
+32
+R5
+!i10b 1
+R6
+Z130 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/register_file_tb.vhd|
+Z131 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/register_file_tb.vhd|
+!i113 1
+R9
+R10
+Atest
+R126
+DEx4 work 16 register_file_tb 0 22 Q4BMlOG6TABI6K6>hT69A3
+!i122 308
+l19
+L4 101
+VY`I=C1P^BegIe]J3SXUOm0
+!s100 BScbU^`[;jk:;jaOd<5k03
+R4
+32
+R5
+!i10b 1
+R6
+R130
+R131
+!i113 1
+R9
+R10
+Eresult_register
+Z132 w1781177011
+!i122 305
+R0
+Z133 8C:/git/Hardware-Engineering-Gr_A3/cpu/registier_8bit.vhd
+Z134 FC:/git/Hardware-Engineering-Gr_A3/cpu/registier_8bit.vhd
+l0
+L1 1
+VQo2[MNc6mYR`BbWog5jlY2
+!s100 2KV1ol<b]02>m<;BDT6l>2
+R4
+32
+R5
+!i10b 1
+R6
+Z135 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/registier_8bit.vhd|
+Z136 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/registier_8bit.vhd|
+!i113 1
+R9
+R10
+Abehavior
+R120
+!i122 305
+l12
+L11 13
+Ve1lTQKDlj3SKW6bEFVi?D2
+!s100 i2@_FN0^1T92lV627K;9A0
+R4
+32
+R5
+!i10b 1
+R6
+R135
+R136
+!i113 1
+R9
+R10
+Eripple_carry_adder
+Z137 w1778511151
+!i122 299
+R0
+Z138 8C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd
+Z139 FC:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd
+l0
+L1 1
+VSn_4]lZjWGCcnQR30[0GI0
+!s100 1g;HLU0NDj?=`V_PXgI?01
+R4
+32
+R52
+!i10b 1
+R75
+Z140 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd|
+Z141 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd|
+!i113 1
+R9
+R10
+Astructure
+DEx4 work 18 ripple_carry_adder 0 22 Sn_4]lZjWGCcnQR30[0GI0
+!i122 299
+l18
+L10 46
+Vj[FAb6>D`V_lVA=bFM3>[1
+!s100 74efao9o_6FCMLXdR0C5l3
+R4
+32
+R52
+!i10b 1
+R75
+R140
+R141
+!i113 1
+R9
+R10
+Eripple_carry_adder_tb
+Z142 w1778513511
+!i122 300
+R0
+Z143 8C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder_tb.vhd
+Z144 FC:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder_tb.vhd
+l0
+L1 1
+Vn0<[_S9zL3GO<ZB_3BgYC2
+!s100 l[:ZbmGTQm:Z@OL]FNB^_2
+R4
+32
+R52
+!i10b 1
+R75
+Z145 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder_tb.vhd|
+Z146 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder_tb.vhd|
+!i113 1
+R9
+R10
+Astructure
+DEx4 work 21 ripple_carry_adder_tb 0 22 n0<[_S9zL3GO<ZB_3BgYC2
+!i122 300
+l22
+L4 62
+VE;b2BP_kS[:NzBZRO<LWP2
+!s100 7?d@?^n[`5CGa=04:MG9P3
+R4
+32
+R52
+!i10b 1
+R75
+R145
+R146
+!i113 1
+R9
+R10
+Etb_half_adder
+Z147 w1778155485
+!i122 297
+R0
+Z148 8C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd
+Z149 FC:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd
 l0
 L1 1
 V0WX`aRkSTJf^D^Y;biUKb2
 !s100 kC]A>HGS_0fk;_o9PKhA>0
 R4
 32
-R5
+R52
 !i10b 1
-R6
-Z123 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd|
-Z124 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd|
+R75
+Z150 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd|
+Z151 !s107 C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd|
 !i113 1
 R9
 R10
 Abehavioral
 DEx4 work 13 tb_half_adder 0 22 0WX`aRkSTJf^D^Y;biUKb2
-!i122 204
+!i122 297
 l18
 L4 42
 Vkgj3i0]TFz;2FHTNe7U:R1
 !s100 _KgW_GbMIj^la3oQeDL1b0
 R4
 32
-R5
+R52
 !i10b 1
-R6
-R123
-R124
+R75
+R150
+R151
 !i113 1
 R9
 R10

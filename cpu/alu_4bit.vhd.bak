@@ -16,7 +16,7 @@ architecture structure of alu is
         port(
             a    : in  bit_vector(3 downto 0);
             b    : in  bit_vector(3 downto 0);
-            sub  : in  bit;
+            mode : in  bit;
             s    : out bit_vector(3 downto 0);
             co   : out bit
         );
@@ -30,20 +30,29 @@ architecture structure of alu is
         );
     end component;
 
+    component divider is
+      port(
+           a : in  bit_vector(3 downto 0);
+           b : in  bit_vector(3 downto 0);
+           q : out bit_vector(3 downto 0)
+       );
+    end component;
+
     signal addsub_result : bit_vector(3 downto 0);
     signal addsub_carry  : bit;
 
     signal mult_result   : bit_vector(7 downto 0);
+    signal div_result : bit_vector(3 downto 0);
 
 begin
 
     ADDSUB : CR_add_sub
         port map(
-            a   => a,
-            b   => b,
-            sub => op(0),
-            s   => addsub_result,
-            co  => addsub_carry
+            a    => a,
+            b    => b,
+            mode => op(0),
+            s    => addsub_result,
+            co   => addsub_carry
         );
 
     MULT : multiplier
@@ -51,6 +60,12 @@ begin
             a => a,
             b => b,
             p => mult_result
+        );
+    DIV : divider
+        port map(
+           a => a,
+           b => b,
+           q => div_result
         );
 
     process(op, addsub_result, mult_result, addsub_carry)

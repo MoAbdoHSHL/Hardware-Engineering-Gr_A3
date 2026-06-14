@@ -30,10 +30,19 @@ architecture structure of alu is
         );
     end component;
 
+    component divider is
+      port(
+           a : in  bit_vector(3 downto 0);
+           b : in  bit_vector(3 downto 0);
+           q : out bit_vector(3 downto 0)
+       );
+    end component;
+
     signal addsub_result : bit_vector(3 downto 0);
     signal addsub_carry  : bit;
 
     signal mult_result   : bit_vector(7 downto 0);
+    signal div_result : bit_vector(3 downto 0);
 
 begin
 
@@ -51,6 +60,12 @@ begin
             a => a,
             b => b,
             p => mult_result
+        );
+    DIV : divider
+        port map(
+           a => a,
+           b => b,
+           q => div_result
         );
 
     process(op, addsub_result, mult_result, addsub_carry)
@@ -72,9 +87,10 @@ begin
                 result <= mult_result;
                 carry <= '0';
 
-            when others =>     -- DIV placeholder
-                result <= "00000000";
-                carry <= '0';
+            when "11" =>       -- DIV
+   		 result(3 downto 0) <= div_result;
+   		 result(7 downto 4) <= "0000";
+   		 carry <= '0';
 
         end case;
 
