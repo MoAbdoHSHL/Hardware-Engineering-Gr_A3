@@ -77,22 +77,31 @@ begin
             report "Failed MUL: 15 x 15"
             severity error;
 
-        -- DIV: 9 / 2 = 4
+        -- DIV: 9 / 2 = quotient 4, remainder 1
 	a <= "1001";
 	b <= "0010";
 	op <= "11";
 	wait for 10 ns;
-	assert result = "00000100"
+	assert result = "00010100"
 	    report "Failed DIV: 9 / 2"
-  	    severity error;
+	    severity error;
 
-	-- DIV: 15 / 3 = 5
+	-- DIV: 15 / 3 = quotient 5, remainder 0
 	a <= "1111";
 	b <= "0011";
 	op <= "11";
 	wait for 10 ns;
 	assert result = "00000101"
 	    report "Failed DIV: 15 / 3"
+	    severity error;
+
+	-- DIV: 15 / 4 = quotient 3, remainder 3
+	a <= "1111";
+	b <= "0100";
+	op <= "11";
+	wait for 10 ns;
+	assert result = "00110011"
+	    report "Failed DIV: 15 / 4"
 	    severity error;
 
         wait;

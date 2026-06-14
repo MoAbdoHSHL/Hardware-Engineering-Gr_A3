@@ -2,7 +2,8 @@ entity divider is
     port(
         a : in  bit_vector(3 downto 0);
         b : in  bit_vector(3 downto 0);
-        q : out bit_vector(3 downto 0)
+        q : out bit_vector(3 downto 0);
+        r : out bit_vector(3 downto 0)
     );
 end entity;
 
@@ -47,56 +48,73 @@ begin
     process(a, b, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15)
     begin
         if b = "0000" then
-            q <= "1111"; -- divide by zero error
+    q <= "1111";
+    r <= "1111";
 
-        elsif c1 = '0' then
-            q <= "0000";
+	elsif c1 = '0' then
+	    q <= "0000";
+	    r <= r0;
+	
+	elsif c2 = '0' then
+	    q <= "0001";
+	    r <= r1;
 
-        elsif c2 = '0' then
-            q <= "0001";
+	elsif c3 = '0' then
+	    q <= "0010";
+	    r <= r2;
 
-        elsif c3 = '0' then
-            q <= "0010";
+	elsif c4 = '0' then
+	    q <= "0011";
+	    r <= r3;
 
-        elsif c4 = '0' then
-            q <= "0011";
+	elsif c5 = '0' then
+	    q <= "0100";
+	    r <= r4;
 
-        elsif c5 = '0' then
-            q <= "0100";
+	elsif c6 = '0' then
+	    q <= "0101";
+	    r <= r5;
 
-        elsif c6 = '0' then
-            q <= "0101";
+	elsif c7 = '0' then
+	    q <= "0110";
+	    r <= r6;
 
-        elsif c7 = '0' then
-            q <= "0110";
+	elsif c8 = '0' then
+	    q <= "0111";
+	    r <= r7;
 
-        elsif c8 = '0' then
-            q <= "0111";
+	elsif c9 = '0' then
+	    q <= "1000";
+	    r <= r8;
 
-        elsif c9 = '0' then
-            q <= "1000";
+	elsif c10 = '0' then
+	    q <= "1001";
+	    r <= r9;
+		
+	elsif c11 = '0' then
+	    q <= "1010";
+	    r <= r10;
 
-        elsif c10 = '0' then
-            q <= "1001";
+	elsif c12 = '0' then
+	    q <= "1011";
+	    r <= r11;
 
-        elsif c11 = '0' then
-            q <= "1010";
+	elsif c13 = '0' then
+	    q <= "1100";
+	    r <= r12;
 
-        elsif c12 = '0' then
-            q <= "1011";
+	elsif c14 = '0' then
+	    q <= "1101";
+	    r <= r13;
 
-        elsif c13 = '0' then
-            q <= "1100";
+	elsif c15 = '0' then
+	    q <= "1110";
+	    r <= r14;
 
-        elsif c14 = '0' then
-            q <= "1101";
-
-        elsif c15 = '0' then
-            q <= "1110";
-
-        else
-            q <= "1111";
-        end if;
+	else
+	    q <= "1111";
+	    r <= r15;
+	end if;
     end process;
 
 end architecture;

@@ -60,20 +60,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity ripple_carry_adder
 -- Compiling architecture structure of ripple_carry_adder
 
-} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/divider_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/divider_tb.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Compiling entity divider_tb
--- Compiling architecture test of divider_tb
--- Loading entity divider
-
-} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter_tb.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Compiling entity program_counter_tb
--- Compiling architecture test of program_counter_tb
--- Loading entity program_counter
-
 } {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit_tb.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
@@ -81,36 +67,11 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling architecture test of multiplier_tb
 -- Loading entity multiplier
 
-} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd
+} {} {}} {C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
--- Compiling entity divider
--- Compiling architecture structure of divider
-
-} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/program_counter.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Compiling entity program_counter
--- Compiling architecture behavior of program_counter
-
-} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/register_8bit_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/register_8bit_tb.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Compiling entity reg_tb
--- Compiling architecture test of reg_tb
--- Loading entity result_register
-
-} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Compiling entity bcd_adder
--- Compiling architecture structure of bcd_adder
-
-} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Compiling entity clk_divider
--- Compiling architecture behavior of clk_divider
+-- Compiling entity tb_half_adder
+-- Compiling architecture Behavioral of tb_half_adder
 
 } {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder_truth.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
@@ -118,11 +79,24 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity full_adder_truth
 -- Compiling architecture structure of full_adder_truth
 
-} {} {}} {C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd} {1 {vcom -work work -2002 -explicit -stats=none {C:/git/Hardware-Engineering-Gr_A3/cpu/half adder_tb.vhd}
+} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/clk_divider.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
--- Compiling entity tb_half_adder
--- Compiling architecture Behavioral of tb_half_adder
+-- Compiling entity clk_divider
+-- Compiling architecture behavior of clk_divider
+
+} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/BCD_adder.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Compiling entity bcd_adder
+-- Compiling architecture structure of bcd_adder
+
+} {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/register_8bit_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/register_8bit_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Compiling entity reg_tb
+-- Compiling architecture test of reg_tb
+-- Loading entity result_register
 
 } {} {}} C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020

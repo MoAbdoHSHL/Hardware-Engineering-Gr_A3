@@ -77,17 +77,23 @@ begin
             report "Failed MUL: 15 x 15"
             severity error;
 
-        -- DIV placeholder
-        a <= "1000";
-        b <= "0010";
-        op <= "11";
-        wait for 10 ns;
-        assert result = "00000000"
-            report "Failed DIV placeholder"
-            severity error;
+        -- DIV: 9 / 2 = 4
+	a <= "1001";
+	b <= "0010";
+	op <= "11";
+	wait for 10 ns;
+	assert result = "00000100"
+	    report "Failed DIV: 9 / 2"
+  	    severity error;
 
-        report "All ALU tests passed."
-            severity note;
+	-- DIV: 15 / 3 = 5
+	a <= "1111";
+	b <= "0011";
+	op <= "11";
+	wait for 10 ns;
+	assert result = "00000101"
+	    report "Failed DIV: 15 / 3"
+	    severity error;
 
         wait;
     end process;
