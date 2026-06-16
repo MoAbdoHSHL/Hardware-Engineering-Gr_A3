@@ -1,0 +1,116 @@
+entity cpu_top is
+    port(
+        clk     : in  bit;
+        btn_exec: in  bit;
+        btn_rst : in  bit;
+
+        sw      : in  bit_vector(9 downto 0);
+
+        led     : out bit_vector(7 downto 0);
+        seg     : out bit_vector(6 downto 0);
+        an      : out bit_vector(7 downto 0)
+    );
+end entity;
+
+architecture structure of cpu_top is
+
+    component alu is
+        port(
+            a      : in  bit_vector(3 downto 0);
+            b      : in  bit_vector(3 downto 0);
+            op     : in  bit_vector(1 downto 0);
+            result : out bit_vector(7 downto 0);
+            carry  : out bit
+        );
+    end component;
+
+    component result_register is
+        port(
+            clk : in  bit;
+            rst : in  bit;
+            en  : in  bit;
+            d   : in  bit_vector(7 downto 0);
+            q   : out bit_vector(7 downto 0)
+        );
+    end component;
+
+    component seven_segment_decoder is
+        port(
+            bin : in  bit_vector(3 downto 0);
+            seg : out bit_vector(6 downto 0)
+        );
+    end component;
+
+    signal a_in       : bit_vector(3 downto 0);
+    signal b_in       : bit_vector(3 downto 0);
+    signal op_in      : bit_vector(1 downto 0);
+
+    signal alu_result : bit_vector(7 downto 0);
+    signal stored_result : bit_vector(7 downto 0);
+    signal carry_temp : bit;
+
+    signal seg_low  : bit_vector(6 downto 0);
+    signal seg_high : bit_vector(6 downto 0);
+
+    signal display_select : bit := '0';
+
+begin
+
+    a_in  <= sw(3 downto 0);
+    b_in  <= sw(7 downto 4);
+    op_in <= sw(9 downto 8);
+
+    ALU_UNIT : alu
+        port map(
+            a      => a_in,
+            b      => b_in,
+            op     => op_in,
+            result => alu_result,
+            carry  => carry_temp
+        );
+
+    RESULT_REG : result_register
+        port map(
+            clk => clk,
+            rst => btn_rst,
+            en  => btn_exec,
+            d   => alu_result,
+            q   => stored_result
+        );
+
+    DEC_LOW : seven_segment_decoder
+        port map(
+            bin => stored_result(3 downto 0),
+            seg => seg_low
+        );
+
+    DEC_HIGH : seven_segment_decoder
+        port map(
+            bin => stored_result(7 downto 4),
+            seg => seg_high
+        );
+
+    -- Very simple two-digit multiplexing
+    process(clk, btn_rst)
+    begin
+        if btn_rst = '1' then
+            display_select <= '0';
+        elsif clk'event and clk = '1' then
+            display_select <= not display_select;
+        end if;
+    end process;
+
+    process(display_select, seg_low, seg_high)
+    begin
+        if display_select = '0' then
+            seg <= seg_low;
+            an  <= "11111110"; -- digit 0 active
+        else
+            seg <= seg_high;
+            an  <= "11111101"; -- digit 1 active
+        end if;
+    end process;
+
+    led <= stored_result;
+
+end architecture;

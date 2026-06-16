@@ -23,4 +23,63 @@
 # Compile of program_counter_tb.vhd was successful.
 # Compile of divider.vhd was successful.
 # Compile of divider_tb.vhd was successful.
-# 25 compiles, 0 failed with no errors.
+# Compile of seven_segment_decoder.vhd was successful.
+# Compile of cpu_top.vhd was successful.
+# 27 compiles, 0 failed with no errors.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# Compile of registier_8bit.vhd was successful.
+# Compile of register_8bit_tb.vhd was successful.
+# Compile of register_file.vhd was successful.
+# Compile of register_file_tb.vhd was successful.
+# Compile of program_counter.vhd was successful.
+# Compile of program_counter_tb.vhd was successful.
+# Compile of divider.vhd was successful.
+# Compile of divider_tb.vhd was successful.
+# Compile of seven_segment_decoder.vhd was successful.
+# Compile of cpu_top.vhd was successful.
+# 27 compiles, 0 failed with no errors.
+# Compile of BCD_adder.vhd was successful.
+# Compile of BCD_adder_tb.vhd was successful.
+# Compile of clk_divider.vhd was successful.
+# Compile of clk_divider_tb.vhd was successful.
+# Compile of CR_add_sub.vhd was successful.
+# Compile of CR_add_sub_tb.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder_tb.vhd was successful.
+# Compile of full_adder_truth.vhd was successful.
+# Compile of half adder_tb.vhd was successful.
+# Compile of half_adder.vhd was successful.
+# Compile of ripple_carry_adder.vhd was successful.
+# Compile of ripple_carry_adder_tb.vhd was successful.
+# Compile of multiplier_4bit.vhd was successful.
+# Compile of multiplier_4bit_tb.vhd was successful.
+# Compile of alu_4bit.vhd was successful.
+# Compile of alu_4bit_tb.vhd was successful.
+# Compile of registier_8bit.vhd was successful.
+# Compile of register_8bit_tb.vhd was successful.
+# Compile of register_file.vhd was successful.
+# Compile of register_file_tb.vhd was successful.
+# Compile of program_counter.vhd was successful.
+# Compile of program_counter_tb.vhd was successful.
+# Compile of divider.vhd was successful.
+# Compile of divider_tb.vhd was successful.
+# Compile of seven_segment_decoder.vhd was successful.
+# Compile of cpu_top.vhd was successful.
+# Compile of binary_to_bcd.vhd was successful.
+# 28 compiles, 0 failed with no errors.
