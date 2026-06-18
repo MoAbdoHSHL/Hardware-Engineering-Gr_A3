@@ -3,8 +3,8 @@
 # SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
 # IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
 # SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Tue Jun 16 12:16:02 2026
-# Process ID         : 12364
+# Start of session at: Thu Jun 18 15:59:48 2026
+# Process ID         : 22240
 # Current directory  : C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/synth_1
 # Command line       : vivado.exe -log cpu_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu_top.tcl
 # Log file           : C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/synth_1/cpu_top.vds
@@ -19,6 +19,6 @@
 # Host memory        : 17012 MB
 # Swap memory        : 4160 MB
 # Total Virtual      : 21173 MB
-# Available Virtual  : 6429 MB
+# Available Virtual  : 5498 MB
 #-----------------------------------------------------------
 source cpu_top.tcl -notrace

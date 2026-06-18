@@ -83,7 +83,6 @@ read_vhdl -library xil_defaultlib {
   C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd
   C:/git/Hardware-Engineering-Gr_A3/cpu/half_adder.vhd
   C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd
-  C:/git/Hardware-Engineering-Gr_A3/cpu/registier_8bit.vhd
   C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd
   C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd
   C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd

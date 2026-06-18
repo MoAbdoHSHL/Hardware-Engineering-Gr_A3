@@ -3,11 +3,11 @@
 # SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
 # IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
 # SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Thu Jun 18 16:00:49 2026
-# Process ID         : 22304
+# Start of session at: Thu Jun 18 15:48:03 2026
+# Process ID         : 1136
 # Current directory  : C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/impl_1
-# Command line       : vivado.exe -log cpu_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source cpu_top.tcl -notrace
-# Log file           : C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/impl_1/cpu_top.vdi
+# Command line       : vivado.exe -log CR_add_sub_tb.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source CR_add_sub_tb.tcl -notrace
+# Log file           : C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/impl_1/CR_add_sub_tb.vdi
 # Journal file       : C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/impl_1\vivado.jou
 # Running On         : LAPTOP-C5OCR9QS
 # Platform           : Windows Server 2016 or Windows 10
@@ -19,6 +19,6 @@
 # Host memory        : 17012 MB
 # Swap memory        : 4160 MB
 # Total Virtual      : 21173 MB
-# Available Virtual  : 5536 MB
+# Available Virtual  : 5631 MB
 #-----------------------------------------------------------
-source cpu_top.tcl -notrace
+source CR_add_sub_tb.tcl -notrace
