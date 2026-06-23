@@ -1,23 +1,37 @@
 @startuml
 title Signed Multi-Cycle Divider FSM
 
-[*] --> IDLE
+hide empty description
 
-IDLE --> CHECK_ZERO : start = 1
+skinparam state {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+}
 
-CHECK_ZERO --> ERROR : divisor = 0
-CHECK_ZERO --> LOAD : divisor /= 0
+state "S_DIV_IDLE\nQ_cur = 000" as S_DIV_IDLE
+state "S_DIV_CHECK_ZERO\nQ_cur = 001" as S_DIV_CHECK_ZERO
+state "S_DIV_ERROR\nQ_cur = 010" as S_DIV_ERROR
+state "S_DIV_LOAD\nQ_cur = 011" as S_DIV_LOAD
+state "S_DIV_CALC\nQ_cur = 100" as S_DIV_CALC
+state "S_DIV_FINISH\nQ_cur = 101" as S_DIV_FINISH
 
-LOAD --> CALC : remainder = abs(A)\ndivisor = abs(B)\nquotient = 0
+[*] --> S_DIV_IDLE
 
-CALC --> CALC : remainder >= divisor\nremainder -= divisor\nquotient++
+S_DIV_IDLE --> S_DIV_CHECK_ZERO : div_start=1
 
-CALC --> FINISH : remainder < divisor
+S_DIV_CHECK_ZERO --> S_DIV_ERROR : divisor=0
 
-FINISH --> DONE : apply quotient sign\napply remainder sign\ncheck display limits
+S_DIV_CHECK_ZERO --> S_DIV_LOAD : divisor/=0
 
-ERROR --> DONE : div_zero = 1\ndisplay_error = 1
+S_DIV_ERROR --> S_DIV_IDLE : div_zero=1\ndisplay_error=1\ndiv_done=1
 
-DONE --> IDLE : done = 1
+S_DIV_LOAD --> S_DIV_CALC : remainder := abs(A)\ndivisor := abs(B)\nquotient := 0\nq_sign := A(7) xor B(7)\nr_sign := A(7)
+
+S_DIV_CALC --> S_DIV_CALC : remainder >= divisor\nremainder := remainder - divisor\nquotient++
+
+S_DIV_CALC --> S_DIV_FINISH : remainder < divisor
+
+S_DIV_FINISH --> S_DIV_IDLE : apply quotient sign\napply remainder sign\ncheck display limits\ndiv_done=1
 
 @enduml

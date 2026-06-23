@@ -1,16 +1,27 @@
 @startuml
 title Seven-Segment Display Refresh FSM
 
-[*] --> DIGIT0
+hide empty description
 
-DIGIT0 --> DIGIT1 : refresh_tick
-DIGIT1 --> DIGIT2 : refresh_tick
-DIGIT2 --> DIGIT3 : refresh_tick
-DIGIT3 --> DIGIT0 : refresh_tick
+skinparam state {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+}
 
-state DIGIT0 : enable an[0]\nshow ones/remainder
-state DIGIT1 : enable an[1]\nshow tens or quotient ones\nturn dp on for division
-state DIGIT2 : enable an[2]\nshow hundreds/tens/minus
-state DIGIT3 : enable an[3]\nshow minus or blank
+state "S_DISP_D0\nQ_cur = 00" as S_DISP_D0
+state "S_DISP_D1\nQ_cur = 01" as S_DISP_D1
+state "S_DISP_D2\nQ_cur = 10" as S_DISP_D2
+state "S_DISP_D3\nQ_cur = 11" as S_DISP_D3
+
+[*] --> S_DISP_D0
+
+S_DISP_D0 --> S_DISP_D1 : refresh_tick\nenable an[0]\nshow ones / remainder
+
+S_DISP_D1 --> S_DISP_D2 : refresh_tick\nenable an[1]\nshow tens / quotient ones\nDP on for division
+
+S_DISP_D2 --> S_DISP_D3 : refresh_tick\nenable an[2]\nshow hundreds / quotient tens / minus
+
+S_DISP_D3 --> S_DISP_D0 : refresh_tick\nenable an[3]\nshow minus or blank
 
 @enduml

@@ -1,0 +1,44 @@
+@startuml
+title ALU Control FSM
+
+hide empty description
+
+skinparam state {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+}
+
+state "S_ALU_IDLE\nQ_cur = 000" as S_ALU_IDLE
+state "S_ALU_ADD_SUB\nQ_cur = 001" as S_ALU_ADD_SUB
+state "S_ALU_START_MUL\nQ_cur = 010" as S_ALU_START_MUL
+state "S_ALU_WAIT_MUL\nQ_cur = 011" as S_ALU_WAIT_MUL
+state "S_ALU_START_DIV\nQ_cur = 100" as S_ALU_START_DIV
+state "S_ALU_WAIT_DIV\nQ_cur = 101" as S_ALU_WAIT_DIV
+state "S_ALU_DONE\nQ_cur = 110" as S_ALU_DONE
+
+[*] --> S_ALU_IDLE
+
+S_ALU_IDLE --> S_ALU_ADD_SUB : alu_start=1\nop=ADD/SUB
+
+S_ALU_IDLE --> S_ALU_START_MUL : alu_start=1\nop=MUL
+
+S_ALU_IDLE --> S_ALU_START_DIV : alu_start=1\nop=DIV
+
+S_ALU_ADD_SUB --> S_ALU_DONE : result_valid=1\noverflow checked
+
+S_ALU_START_MUL --> S_ALU_WAIT_MUL : mul_start=1
+
+S_ALU_WAIT_MUL --> S_ALU_WAIT_MUL : mul_done=0
+
+S_ALU_WAIT_MUL --> S_ALU_DONE : mul_done=1
+
+S_ALU_START_DIV --> S_ALU_WAIT_DIV : div_start=1
+
+S_ALU_WAIT_DIV --> S_ALU_WAIT_DIV : div_done=0
+
+S_ALU_WAIT_DIV --> S_ALU_DONE : div_done=1
+
+S_ALU_DONE --> S_ALU_IDLE : alu_done=1
+
+@enduml

@@ -1,18 +1,29 @@
 @startuml
 title Signed Multi-Cycle Multiplier FSM
 
-[*] --> IDLE
+hide empty description
 
-IDLE --> LOAD : start = 1
+skinparam state {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+}
 
-LOAD --> CALC : abs(A), abs(B)\nresult_sign = A.sign XOR B.sign\ncount = 0
+state "S_MUL_IDLE\nQ_cur = 000" as S_MUL_IDLE
+state "S_MUL_LOAD\nQ_cur = 001" as S_MUL_LOAD
+state "S_MUL_CALC\nQ_cur = 010" as S_MUL_CALC
+state "S_MUL_FINISH\nQ_cur = 011" as S_MUL_FINISH
 
-CALC --> CALC : count < 8\nif B[0]=1: acc += multiplicand\nmultiplicand <<= 1\nB >>= 1\ncount++
+[*] --> S_MUL_IDLE
 
-CALC --> FINISH : count = 8
+S_MUL_IDLE --> S_MUL_LOAD : mul_start=1
 
-FINISH --> DONE : apply sign\ncheck -128..127 overflow
+S_MUL_LOAD --> S_MUL_CALC : abs(A), abs(B)\nproduct_sign = A(7) xor B(7)\nacc := 0\ncount := 0
 
-DONE --> IDLE : done = 1
+S_MUL_CALC --> S_MUL_CALC : count < 8\nif multiplier_bit=1:\nacc := acc + multiplicand\nmultiplicand << 1\nmultiplier >> 1\ncount++
+
+S_MUL_CALC --> S_MUL_FINISH : count = 8
+
+S_MUL_FINISH --> S_MUL_IDLE : apply product_sign\ncheck -128..127 overflow\nmul_done=1
 
 @enduml

@@ -1,18 +1,29 @@
+The CPU control unit is modeled as a finite-state machine. The FSM waits in the idle state until the execute button is pressed. If the CPU is in load mode, the selected register is loaded with the signed two’s-complement input value. If the CPU is in execute mode, the FSM latches the selected source registers and operation, starts the ALU, waits until the ALU asserts the done signal, and then writes the result back to the selected destination register. This ensures that multi-cycle operations such as multiplication and division complete before the register file is updated.
+
 @startuml
 title CPU Control FSM
 
-[*] --> IDLE
+hide empty description
 
-IDLE --> LOAD_REGISTER : btn_exec && mode=LOAD
-IDLE --> START_ALU : btn_exec && mode=EXECUTE
+state "S_IDLE\nQ_cur = 000" as S_IDLE
+state "S_LOAD\nQ_cur = 001" as S_LOAD
+state "S_START_ALU\nQ_cur = 010" as S_START_ALU
+state "S_WAIT_ALU\nQ_cur = 011" as S_WAIT_ALU
+state "S_WRITEBACK\nQ_cur = 100" as S_WRITEBACK
 
-LOAD_REGISTER --> IDLE : reg[dest] := load_value
+[*] --> S_IDLE
 
-START_ALU --> WAIT_ALU : latch A, B, op\nalu_start := 1
+S_IDLE --> S_IDLE : btn_exec=0\noutputs: all 0
+S_IDLE --> S_LOAD : btn_exec=1, mode=0
+S_IDLE --> S_START_ALU : btn_exec=1, mode=1
 
-WAIT_ALU --> WAIT_ALU : alu_done = 0
-WAIT_ALU --> WRITEBACK : alu_done = 1
+S_LOAD --> S_IDLE : load_en=1\nreg[dest] := load_value
 
-WRITEBACK --> IDLE : reg[dest] := alu_result\nstore flags/remainder
+S_START_ALU --> S_WAIT_ALU : alu_start=1\nlatch A, B, op
+
+S_WAIT_ALU --> S_WAIT_ALU : alu_done=0
+S_WAIT_ALU --> S_WRITEBACK : alu_done=1
+
+S_WRITEBACK --> S_IDLE : writeback_en=1\nstore_flags=1
 
 @enduml
