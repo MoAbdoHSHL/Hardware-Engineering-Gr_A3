@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
 <nta>
-  <declaration>
-// UPPAAL control model for the signed 8-bit two's-complement CPU design.
-// Naming follows the lecture style:
-//   Q_cur = current state
-//   Q_nxt = next state
-//   outputs are control signals such as load_en, alu_start, writeback_en
-// This model verifies control behaviour, not bit-level arithmetic.
+	<declaration>
+// Complete lecture-style UPPAAL FSM model for the signed 8-bit CPU project.
+// This model focuses on the control behaviour, not bit-level arithmetic.
+//
+// Naming style:
+// Q_cur = current state
+// Q_nxt = next state
+// S_*   = encoded state names
 
 const int ADD = 0;
 const int SUB = 1;
@@ -16,174 +17,434 @@ const int DIV = 3;
 
 int[0,3] op;
 
+// Synchronisation channels
 chan alu_start, alu_done;
 chan mul_start, mul_done;
 chan div_start, div_done;
 
+// Abstract control outputs
 bool load_en = false;
 bool writeback_en = false;
 bool store_flags = false;
 bool display_refresh = false;
+bool div_zero = false;
+bool display_error = false;
   </declaration>
-
-  <template>
-    <name>CPU_Control</name>
-    <declaration>
-// Moore-style CPU control FSM.
+	<template>
+		<name>CPU_Control</name>
+		<declaration>
 // State encoding:
-// S_IDLE=000, S_LOAD=001, S_START_ALU=010, S_WAIT_ALU=011, S_WRITEBACK=100
+// S_IDLE      = 000
+// S_LOAD      = 001
+// S_START_ALU = 010
+// S_WAIT_ALU  = 011
+// S_WRITEBACK = 100
     </declaration>
-    <location id="cpu_idle" x="0" y="0"><name x="-35" y="-30">S_IDLE</name></location>
-    <location id="cpu_load" x="-300" y="160"><name x="-355" y="130">S_LOAD</name></location>
-    <location id="cpu_start" x="300" y="160"><name x="250" y="130">S_START_ALU</name></location>
-    <location id="cpu_wait" x="300" y="340"><name x="255" y="310">S_WAIT_ALU</name></location>
-    <location id="cpu_writeback" x="300" y="520"><name x="245" y="490">S_WRITEBACK</name></location>
-    <init ref="cpu_idle"/>
-
-    <transition><source ref="cpu_idle"/><target ref="cpu_idle"/>
-      <label kind="comments" x="-70" y="-85">Q_cur=S_IDLE, btn_exec=0 / outputs=0</label>
-    </transition>
-    <transition><source ref="cpu_idle"/><target ref="cpu_load"/>
-      <label kind="comments" x="-290" y="40">btn_exec=1, mode=LOAD</label>
-    </transition>
-    <transition><source ref="cpu_load"/><target ref="cpu_idle"/>
-      <label kind="assignment" x="-285" y="215">load_en = true</label>
-      <label kind="comments" x="-285" y="240">Q_nxt=S_IDLE</label>
-    </transition>
-    <transition><source ref="cpu_idle"/><target ref="cpu_start"/>
-      <label kind="select" x="55" y="30">o : int[0,3]</label>
-      <label kind="assignment" x="55" y="55">op = o</label>
-      <label kind="comments" x="55" y="80">btn_exec=1, mode=EXECUTE</label>
-    </transition>
-    <transition><source ref="cpu_start"/><target ref="cpu_wait"/>
-      <label kind="synchronisation" x="320" y="220">alu_start!</label>
-      <label kind="comments" x="320" y="245">alu_start output asserted</label>
-    </transition>
-    <transition><source ref="cpu_wait"/><target ref="cpu_wait"/>
-      <label kind="comments" x="350" y="330">alu_done=0 / stay</label>
-    </transition>
-    <transition><source ref="cpu_wait"/><target ref="cpu_writeback"/>
-      <label kind="synchronisation" x="320" y="420">alu_done?</label>
-      <label kind="comments" x="320" y="445">alu_done=1</label>
-    </transition>
-    <transition><source ref="cpu_writeback"/><target ref="cpu_idle"/>
-      <label kind="assignment" x="20" y="450">writeback_en = true, store_flags = true</label>
-      <label kind="comments" x="20" y="475">reg[dest] := alu_result</label>
-      <nail x="0" y="520"/>
-    </transition>
-  </template>
-
-  <template>
-    <name>ALU_Control</name>
-    <declaration>
+		<location id="id0" x="0" y="0">
+			<name x="17" y="-17">S_IDLE</name>
+		</location>
+		<location id="id1" x="-300" y="160">
+			<name x="-365" y="153">S_LOAD</name>
+		</location>
+		<location id="id2" x="300" y="160">
+			<name x="297" y="127">S_START_ALU</name>
+		</location>
+		<location id="id3" x="300" y="340">
+			<name x="195" y="331">S_WAIT_ALU</name>
+		</location>
+		<location id="id4" x="300" y="520">
+			<name x="323" y="510">S_WRITEBACK</name>
+		</location>
+		<init ref="id0"/>
+		<transition id="id5">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="comments" x="-119" y="-136">Q_cur=S_IDLE, btn_exec=0 / outputs=0</label>
+			<nail x="-34" y="-86"/>
+			<nail x="26" y="-86"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="comments" x="-399" y="-93">btn_exec=1, mode=LOAD</label>
+			<nail x="-272" y="-68"/>
+		</transition>
+		<transition id="id7">
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="assignment" x="-204" y="102">load_en = true</label>
+			<label kind="comments" x="-196" y="125">Q_nxt=S_IDLE</label>
+			<nail x="-85" y="161"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="select" x="161" y="17">o : int[0,3]</label>
+			<label kind="assignment" x="161" y="34">op = o</label>
+			<label kind="comments" x="161" y="59">btn_exec=1, mode=EXECUTE</label>
+		</transition>
+		<transition id="id9">
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="320" y="220">alu_start!</label>
+			<label kind="comments" x="320" y="245">latch A, B, op</label>
+		</transition>
+		<transition id="id10">
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="comments" x="391" y="331">alu_done=0 / stay</label>
+			<nail x="382" y="374"/>
+			<nail x="382" y="306"/>
+		</transition>
+		<transition id="id11">
+			<source ref="id3"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="306" y="399">alu_done?</label>
+			<label kind="comments" x="306" y="424">alu_done=1</label>
+		</transition>
+		<transition id="id12">
+			<source ref="id4"/>
+			<target ref="id0"/>
+			<label kind="assignment" x="-323" y="340">writeback_en = true, store_flags = true</label>
+			<label kind="comments" x="-204" y="365">reg[dest] := alu_result</label>
+			<nail x="0" y="520"/>
+		</transition>
+	</template>
+	<template>
+		<name>ALU_Control</name>
+		<declaration>
 clock t;
 // State encoding:
-// S_ALU_IDLE=000, S_ALU_ADD_SUB=001, S_ALU_START_MUL=010, S_ALU_WAIT_MUL=011,
-// S_ALU_START_DIV=100, S_ALU_WAIT_DIV=101, S_ALU_DONE=110
+// S_ALU_IDLE      = 000
+// S_ALU_ADD_SUB   = 001
+// S_ALU_START_MUL = 010
+// S_ALU_WAIT_MUL  = 011
+// S_ALU_START_DIV = 100
+// S_ALU_WAIT_DIV  = 101
+// S_ALU_DONE      = 110
     </declaration>
-    <location id="alu_idle" x="0" y="0"><name x="-40" y="-30">S_ALU_IDLE</name></location>
-    <location id="alu_addsub" x="-360" y="170"><name x="-425" y="140">S_ALU_ADD_SUB</name><label kind="invariant" x="-420" y="165">t &lt;= 1</label></location>
-    <location id="alu_start_mul" x="-120" y="170"><name x="-190" y="140">S_ALU_START_MUL</name><committed/></location>
-    <location id="alu_wait_mul" x="-120" y="330"><name x="-185" y="300">S_ALU_WAIT_MUL</name></location>
-    <location id="alu_start_div" x="170" y="170"><name x="100" y="140">S_ALU_START_DIV</name><committed/></location>
-    <location id="alu_wait_div" x="170" y="330"><name x="105" y="300">S_ALU_WAIT_DIV</name></location>
-    <location id="alu_done_state" x="0" y="520"><name x="-45" y="490">S_ALU_DONE</name><committed/></location>
-    <init ref="alu_idle"/>
-
-    <transition><source ref="alu_idle"/><target ref="alu_addsub"/>
-      <label kind="guard" x="-335" y="45">op &lt;= SUB</label><label kind="synchronisation" x="-335" y="65">alu_start?</label><label kind="assignment" x="-335" y="85">t = 0</label>
-    </transition>
-    <transition><source ref="alu_idle"/><target ref="alu_start_mul"/>
-      <label kind="guard" x="-115" y="45">op == MUL</label><label kind="synchronisation" x="-115" y="65">alu_start?</label>
-    </transition>
-    <transition><source ref="alu_idle"/><target ref="alu_start_div"/>
-      <label kind="guard" x="145" y="45">op == DIV</label><label kind="synchronisation" x="145" y="65">alu_start?</label>
-    </transition>
-    <transition><source ref="alu_addsub"/><target ref="alu_done_state"><nail x="-360" y="520"/></target>
-      <label kind="guard" x="-330" y="360">t &gt;= 1</label><label kind="comments" x="-330" y="385">ADD/SUB finished</label>
-    </transition>
-    <transition><source ref="alu_start_mul"/><target ref="alu_wait_mul"/><label kind="synchronisation" x="-90" y="230">mul_start!</label></transition>
-    <transition><source ref="alu_wait_mul"/><target ref="alu_done_state"/><label kind="synchronisation" x="-95" y="410">mul_done?</label></transition>
-    <transition><source ref="alu_start_div"/><target ref="alu_wait_div"/><label kind="synchronisation" x="195" y="230">div_start!</label></transition>
-    <transition><source ref="alu_wait_div"/><target ref="alu_done_state"/><label kind="synchronisation" x="190" y="410">div_done?</label></transition>
-    <transition><source ref="alu_done_state"/><target ref="alu_idle">
-      <nail x="0" y="620"/><nail x="0" y="0"/>
-    </target><label kind="synchronisation" x="25" y="455">alu_done!</label></transition>
-  </template>
-
-  <template>
-    <name>Multiplier_FSM</name>
-    <declaration>
+		<location id="id13" x="0" y="0">
+			<name x="-55" y="-35">S_ALU_IDLE</name>
+		</location>
+		<location id="id14" x="-360" y="190">
+			<name x="-442" y="153">S_ALU_ADD_SUB</name>
+			<label kind="invariant" x="-433" y="187">t &lt;= 1</label>
+		</location>
+		<location id="id15" x="-100" y="190">
+			<name x="-180" y="160">S_ALU_START_MUL</name>
+			<committed/>
+		</location>
+		<location id="id16" x="-83" y="360">
+			<name x="-68" y="348">S_ALU_WAIT_MUL</name>
+		</location>
+		<location id="id17" x="510" y="187">
+			<name x="484" y="153">S_ALU_START_DIV</name>
+			<committed/>
+		</location>
+		<location id="id18" x="510" y="357">
+			<name x="467" y="382">S_ALU_WAIT_DIV</name>
+		</location>
+		<location id="id19" x="0" y="560">
+			<name x="-34" y="578">S_ALU_DONE</name>
+			<committed/>
+		</location>
+		<init ref="id13"/>
+		<transition id="id20">
+			<source ref="id13"/>
+			<target ref="id14"/>
+			<label kind="guard" x="-238" y="50">op &lt;= SUB</label>
+			<label kind="synchronisation" x="-238" y="25">alu_start?</label>
+			<label kind="assignment" x="-238" y="75">t = 0</label>
+		</transition>
+		<transition id="id21">
+			<source ref="id13"/>
+			<target ref="id15"/>
+			<label kind="guard" x="-51" y="102">op == MUL</label>
+			<label kind="synchronisation" x="-34" y="76">alu_start?</label>
+		</transition>
+		<transition id="id22">
+			<source ref="id13"/>
+			<target ref="id17"/>
+			<label kind="guard" x="297" y="85">op == DIV</label>
+			<label kind="synchronisation" x="288" y="55">alu_start?</label>
+		</transition>
+		<transition id="id23">
+			<source ref="id14"/>
+			<target ref="id19"/>
+			<label kind="guard" x="-348" y="382">t &gt;= 1</label>
+			<label kind="comments" x="-348" y="416">ADD/SUB result valid</label>
+			<nail x="-360" y="560"/>
+		</transition>
+		<transition id="id24">
+			<source ref="id15"/>
+			<target ref="id16"/>
+			<label kind="synchronisation" x="-85" y="250">mul_start!</label>
+		</transition>
+		<transition id="id25">
+			<source ref="id16"/>
+			<target ref="id16"/>
+			<label kind="comments" x="-263" y="306">mul_done=0 / stay</label>
+			<nail x="-127" y="323"/>
+			<nail x="-127" y="382"/>
+		</transition>
+		<transition id="id26">
+			<source ref="id16"/>
+			<target ref="id19"/>
+			<label kind="synchronisation" x="-42" y="433">mul_done?</label>
+		</transition>
+		<transition id="id27">
+			<source ref="id17"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="525" y="247">div_start!</label>
+		</transition>
+		<transition id="id28">
+			<source ref="id18"/>
+			<target ref="id18"/>
+			<label kind="comments" x="620" y="314">div_done=0 / stay</label>
+			<nail x="612" y="348"/>
+			<nail x="612" y="297"/>
+		</transition>
+		<transition id="id29">
+			<source ref="id18"/>
+			<target ref="id19"/>
+			<label kind="synchronisation" x="289" y="391">div_done?</label>
+		</transition>
+		<transition id="id30">
+			<source ref="id19"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="204" y="221">alu_done!</label>
+			<nail x="217" y="378"/>
+			<nail x="192" y="123"/>
+		</transition>
+	</template>
+	<template>
+		<name>Multiplier_FSM</name>
+		<declaration>
 clock m;
-// State encoding: S_MUL_IDLE=000, S_MUL_LOAD=001, S_MUL_CALC=010, S_MUL_FINISH=011
+// State encoding:
+// S_MUL_IDLE  = 000
+// S_MUL_LOAD  = 001
+// S_MUL_CALC  = 010
+// S_MUL_FINISH= 011
     </declaration>
-    <location id="mul_idle" x="0" y="0"><name x="-45" y="-30">S_MUL_IDLE</name></location>
-    <location id="mul_load" x="230" y="0"><name x="185" y="-30">S_MUL_LOAD</name><committed/></location>
-    <location id="mul_calc" x="230" y="180"><name x="185" y="150">S_MUL_CALC</name><label kind="invariant" x="185" y="175">m &lt;= 8</label></location>
-    <location id="mul_finish" x="0" y="180"><name x="-55" y="150">S_MUL_FINISH</name><committed/></location>
-    <init ref="mul_idle"/>
-    <transition><source ref="mul_idle"/><target ref="mul_load"/><label kind="synchronisation" x="70" y="-35">mul_start?</label><label kind="assignment" x="70" y="-15">m = 0</label></transition>
-    <transition><source ref="mul_load"/><target ref="mul_calc"/><label kind="comments" x="250" y="70">abs(A), abs(B), sign=A7 xor B7</label></transition>
-    <transition><source ref="mul_calc"/><target ref="mul_calc"/><label kind="guard" x="275" y="205">m &lt; 8</label><label kind="comments" x="275" y="230">if B0=1: acc += multiplicand; shift</label></transition>
-    <transition><source ref="mul_calc"/><target ref="mul_finish"/><label kind="guard" x="70" y="205">m &gt;= 8</label></transition>
-    <transition><source ref="mul_finish"/><target ref="mul_idle"/><label kind="synchronisation" x="-70" y="75">mul_done!</label><label kind="comments" x="-70" y="100">apply sign, check -128..127</label></transition>
-  </template>
-
-  <template>
-    <name>Divider_FSM</name>
-    <declaration>
+		<location id="id31" x="0" y="0">
+			<name x="-60" y="-35">S_MUL_IDLE</name>
+		</location>
+		<location id="id32" x="250" y="0">
+			<name x="195" y="-35">S_MUL_LOAD</name>
+			<committed/>
+		</location>
+		<location id="id33" x="250" y="190">
+			<name x="195" y="160">S_MUL_CALC</name>
+			<label kind="invariant" x="195" y="185">m &lt;= 8</label>
+		</location>
+		<location id="id34" x="0" y="190">
+			<name x="-70" y="160">S_MUL_FINISH</name>
+			<committed/>
+		</location>
+		<init ref="id31"/>
+		<transition id="id35">
+			<source ref="id31"/>
+			<target ref="id32"/>
+			<label kind="synchronisation" x="80" y="-40">mul_start?</label>
+			<label kind="assignment" x="85" y="-25">m = 0</label>
+		</transition>
+		<transition id="id36">
+			<source ref="id32"/>
+			<target ref="id33"/>
+			<label kind="comments" x="270" y="70">abs(A), abs(B), sign=A7 xor B7</label>
+		</transition>
+		<transition id="id37">
+			<source ref="id33"/>
+			<target ref="id33"/>
+			<label kind="guard" x="357" y="212">m &lt; 8</label>
+			<label kind="comments" x="340" y="237">shift/add step</label>
+			<nail x="365" y="195"/>
+			<nail x="306" y="272"/>
+		</transition>
+		<transition id="id38">
+			<source ref="id33"/>
+			<target ref="id34"/>
+			<label kind="guard" x="80" y="210">m &gt;= 8</label>
+		</transition>
+		<transition id="id39">
+			<source ref="id34"/>
+			<target ref="id31"/>
+			<label kind="synchronisation" x="-76" y="59">mul_done!</label>
+			<label kind="comments" x="-229" y="93">apply sign, check -128..127</label>
+		</transition>
+	</template>
+	<template>
+		<name>Divider_FSM</name>
+		<declaration>
 clock v;
-// State encoding: S_DIV_IDLE=000, S_DIV_CHECK_ZERO=001, S_DIV_ERROR=010,
-// S_DIV_LOAD=011, S_DIV_CALC=100, S_DIV_FINISH=101
+// State encoding:
+// S_DIV_IDLE       = 000
+// S_DIV_CHECK_ZERO = 001
+// S_DIV_ERROR      = 010
+// S_DIV_LOAD       = 011
+// S_DIV_CALC       = 100
+// S_DIV_FINISH     = 101
     </declaration>
-    <location id="div_idle" x="0" y="0"><name x="-40" y="-30">S_DIV_IDLE</name></location>
-    <location id="div_check" x="230" y="0"><name x="175" y="-30">S_DIV_CHECK_ZERO</name><committed/></location>
-    <location id="div_error" x="460" y="-100"><name x="420" y="-130">S_DIV_ERROR</name><committed/></location>
-    <location id="div_load" x="460" y="80"><name x="415" y="50">S_DIV_LOAD</name><committed/></location>
-    <location id="div_calc" x="460" y="260"><name x="415" y="230">S_DIV_CALC</name><label kind="invariant" x="415" y="255">v &lt;= 255</label></location>
-    <location id="div_finish" x="230" y="260"><name x="175" y="230">S_DIV_FINISH</name><committed/></location>
-    <init ref="div_idle"/>
-    <transition><source ref="div_idle"/><target ref="div_check"/><label kind="synchronisation" x="70" y="-35">div_start?</label><label kind="assignment" x="70" y="-15">v = 0</label></transition>
-    <transition><source ref="div_check"/><target ref="div_error"/><label kind="comments" x="310" y="-100">divisor=0 / div_zero=1</label></transition>
-    <transition><source ref="div_check"/><target ref="div_load"/><label kind="comments" x="310" y="45">divisor!=0</label></transition>
-    <transition><source ref="div_load"/><target ref="div_calc"/><label kind="comments" x="480" y="150">remainder=abs(A), divisor=abs(B), q=0</label></transition>
-    <transition><source ref="div_calc"/><target ref="div_calc"/><label kind="guard" x="505" y="285">v &lt; 255</label><label kind="comments" x="505" y="310">while rem&gt;=divisor: rem-=divisor; q++</label></transition>
-    <transition><source ref="div_calc"/><target ref="div_finish"/><label kind="guard" x="300" y="285">v &gt;= 1</label><label kind="comments" x="300" y="310">rem &lt; divisor</label></transition>
-    <transition><source ref="div_finish"/><target ref="div_idle"><nail x="0" y="260"/></target><label kind="synchronisation" x="80" y="285">div_done!</label><label kind="comments" x="80" y="310">apply signs, check display limits</label></transition>
-    <transition><source ref="div_error"/><target ref="div_idle"><nail x="0" y="-100"/></target><label kind="synchronisation" x="120" y="-125">div_done!</label><label kind="comments" x="120" y="-100">display_error=1</label></transition>
-  </template>
-
-  <template>
-    <name>Display_FSM</name>
-    <declaration>
+		<location id="id40" x="0" y="0">
+			<name x="-55" y="-35">S_DIV_IDLE</name>
+		</location>
+		<location id="id41" x="260" y="0">
+			<name x="190" y="-35">S_DIV_CHECK_ZERO</name>
+			<committed/>
+		</location>
+		<location id="id42" x="520" y="-120">
+			<name x="470" y="-150">S_DIV_ERROR</name>
+			<committed/>
+		</location>
+		<location id="id43" x="520" y="100">
+			<name x="470" y="70">S_DIV_LOAD</name>
+			<committed/>
+		</location>
+		<location id="id44" x="520" y="300">
+			<name x="470" y="270">S_DIV_CALC</name>
+			<label kind="invariant" x="470" y="295">v &lt;= 255</label>
+		</location>
+		<location id="id45" x="260" y="300">
+			<name x="200" y="270">S_DIV_FINISH</name>
+			<committed/>
+		</location>
+		<init ref="id40"/>
+		<transition id="id46">
+			<source ref="id40"/>
+			<target ref="id41"/>
+			<label kind="synchronisation" x="85" y="-40">div_start?</label>
+			<label kind="assignment" x="85" y="-15">v = 0</label>
+		</transition>
+		<transition id="id47">
+			<source ref="id41"/>
+			<target ref="id42"/>
+			<label kind="comments" x="335" y="-115">divisor=0</label>
+		</transition>
+		<transition id="id48">
+			<source ref="id41"/>
+			<target ref="id43"/>
+			<label kind="comments" x="335" y="55">divisor/=0</label>
+		</transition>
+		<transition id="id49">
+			<source ref="id42"/>
+			<target ref="id40"/>
+			<label kind="synchronisation" x="140" y="-145">div_done!</label>
+			<label kind="assignment" x="140" y="-120">div_zero = true, display_error = true</label>
+			<nail x="0" y="-120"/>
+		</transition>
+		<transition id="id50">
+			<source ref="id43"/>
+			<target ref="id44"/>
+			<label kind="comments" x="545" y="175">rem=abs(A), divisor=abs(B), q=0</label>
+		</transition>
+		<transition id="id51">
+			<source ref="id44"/>
+			<target ref="id44"/>
+			<label kind="guard" x="570" y="325">v &lt; 255</label>
+			<label kind="comments" x="570" y="350">if rem&gt;=divisor: rem-=divisor; q++</label>
+			<nail x="490" y="270"/>
+			<nail x="550" y="270"/>
+		</transition>
+		<transition id="id52">
+			<source ref="id44"/>
+			<target ref="id45"/>
+			<label kind="guard" x="340" y="325">v &gt;= 1</label>
+			<label kind="comments" x="340" y="350">rem &lt; divisor</label>
+		</transition>
+		<transition id="id53">
+			<source ref="id45"/>
+			<target ref="id40"/>
+			<label kind="synchronisation" x="90" y="325">div_done!</label>
+			<label kind="comments" x="90" y="350">apply signs, check display limits</label>
+			<nail x="0" y="300"/>
+		</transition>
+	</template>
+	<template>
+		<name>Display_FSM</name>
+		<declaration>
 clock d;
-// State encoding: S_DISP_D0=00, S_DISP_D1=01, S_DISP_D2=10, S_DISP_D3=11
+// State encoding:
+// S_DISP_D0 = 00
+// S_DISP_D1 = 01
+// S_DISP_D2 = 10
+// S_DISP_D3 = 11
     </declaration>
-    <location id="disp0" x="0" y="0"><name x="-45" y="-30">S_DISP_D0</name><label kind="invariant" x="-45" y="-5">d &lt;= 1</label></location>
-    <location id="disp1" x="230" y="0"><name x="185" y="-30">S_DISP_D1</name><label kind="invariant" x="185" y="-5">d &lt;= 1</label></location>
-    <location id="disp2" x="230" y="180"><name x="185" y="150">S_DISP_D2</name><label kind="invariant" x="185" y="175">d &lt;= 1</label></location>
-    <location id="disp3" x="0" y="180"><name x="-45" y="150">S_DISP_D3</name><label kind="invariant" x="-45" y="175">d &lt;= 1</label></location>
-    <init ref="disp0"/>
-    <transition><source ref="disp0"/><target ref="disp1"/><label kind="guard" x="80" y="-35">d &gt;= 1</label><label kind="assignment" x="80" y="-15">d = 0</label><label kind="assignment" x="80" y="5">display_refresh = true</label></transition>
-    <transition><source ref="disp1"/><target ref="disp2"/><label kind="guard" x="250" y="70">d &gt;= 1</label><label kind="assignment" x="250" y="90">d = 0</label></transition>
-    <transition><source ref="disp2"/><target ref="disp3"/><label kind="guard" x="80" y="205">d &gt;= 1</label><label kind="assignment" x="80" y="225">d = 0</label></transition>
-    <transition><source ref="disp3"/><target ref="disp0"/><label kind="guard" x="-130" y="70">d &gt;= 1</label><label kind="assignment" x="-130" y="90">d = 0</label></transition>
-  </template>
-
-  <system>
+		<location id="id54" x="0" y="0">
+			<name x="-55" y="-35">S_DISP_D0</name>
+			<label kind="invariant" x="-55" y="-5">d &lt;= 1</label>
+		</location>
+		<location id="id55" x="250" y="0">
+			<name x="195" y="-35">S_DISP_D1</name>
+			<label kind="invariant" x="195" y="-5">d &lt;= 1</label>
+		</location>
+		<location id="id56" x="250" y="200">
+			<name x="195" y="170">S_DISP_D2</name>
+			<label kind="invariant" x="195" y="195">d &lt;= 1</label>
+		</location>
+		<location id="id57" x="0" y="200">
+			<name x="-55" y="170">S_DISP_D3</name>
+			<label kind="invariant" x="-55" y="195">d &lt;= 1</label>
+		</location>
+		<init ref="id54"/>
+		<transition id="id58">
+			<source ref="id54"/>
+			<target ref="id55"/>
+			<label kind="guard" x="90" y="-40">d &gt;= 1</label>
+			<label kind="assignment" x="90" y="-15">d = 0, display_refresh = true</label>
+			<label kind="comments" x="90" y="10">enable an[0]</label>
+		</transition>
+		<transition id="id59">
+			<source ref="id55"/>
+			<target ref="id56"/>
+			<label kind="guard" x="275" y="80">d &gt;= 1</label>
+			<label kind="assignment" x="275" y="105">d = 0</label>
+			<label kind="comments" x="275" y="130">enable an[1]</label>
+		</transition>
+		<transition id="id60">
+			<source ref="id56"/>
+			<target ref="id57"/>
+			<label kind="guard" x="90" y="225">d &gt;= 1</label>
+			<label kind="assignment" x="90" y="250">d = 0</label>
+			<label kind="comments" x="90" y="275">enable an[2]</label>
+		</transition>
+		<transition id="id61">
+			<source ref="id57"/>
+			<target ref="id54"/>
+			<label kind="guard" x="-150" y="80">d &gt;= 1</label>
+			<label kind="assignment" x="-150" y="105">d = 0</label>
+			<label kind="comments" x="-150" y="130">enable an[3]</label>
+		</transition>
+	</template>
+	<system>
 CPU_CTRL = CPU_Control();
 ALU_CTRL = ALU_Control();
 MUL_FSM = Multiplier_FSM();
 DIV_FSM = Divider_FSM();
 DISP_FSM = Display_FSM();
+
 system CPU_CTRL, ALU_CTRL, MUL_FSM, DIV_FSM, DISP_FSM;
   </system>
-
-  <queries>
-    <query><formula>A[] not deadlock</formula><comment>The combined FSM model should never deadlock.</comment></query>
-    <query><formula>E&lt;&gt; CPU_CTRL.S_WRITEBACK</formula><comment>Writeback must be reachable after an execute operation.</comment></query>
-    <query><formula>A[] MUL_FSM.S_MUL_CALC imply MUL_FSM.m &lt;= 8</formula><comment>The multiplier calculation state is bounded to 8 model cycles.</comment></query>
-    <query><formula>A[] DIV_FSM.S_DIV_CALC imply DIV_FSM.v &lt;= 255</formula><comment>The repeated-subtraction divider calculation is bounded to 255 model cycles.</comment></query>
-    <query><formula>A[] CPU_CTRL.S_WAIT_ALU imply (ALU_CTRL.S_ALU_ADD_SUB or ALU_CTRL.S_ALU_WAIT_MUL or ALU_CTRL.S_ALU_WAIT_DIV or ALU_CTRL.S_ALU_DONE)</formula><comment>If the CPU waits for the ALU, the ALU controller must be busy or finishing.</comment></query>
-  </queries>
+	<queries>
+		<query>
+			<formula>A[] not deadlock</formula>
+			<comment>The combined FSM model should never deadlock.</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; CPU_CTRL.S_WRITEBACK</formula>
+			<comment>Writeback must be reachable after an execute operation.</comment>
+		</query>
+		<query>
+			<formula>A[] MUL_FSM.S_MUL_CALC imply MUL_FSM.m &lt;= 8</formula>
+			<comment>The multiplier calculation state is bounded to 8 model cycles.</comment>
+		</query>
+		<query>
+			<formula>A[] DIV_FSM.S_DIV_CALC imply DIV_FSM.v &lt;= 255</formula>
+			<comment>The repeated-subtraction divider calculation is bounded to 255 model cycles.</comment>
+		</query>
+		<query>
+			<formula>A[] CPU_CTRL.S_WAIT_ALU imply (ALU_CTRL.S_ALU_ADD_SUB or ALU_CTRL.S_ALU_WAIT_MUL or ALU_CTRL.S_ALU_WAIT_DIV or ALU_CTRL.S_ALU_DONE)</formula>
+			<comment>If the CPU waits for the ALU, the ALU controller must be busy or finishing.</comment>
+		</query>
+	</queries>
 </nta>
