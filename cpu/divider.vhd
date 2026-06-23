@@ -1,120 +1,232 @@
 entity divider is
     port(
-        a : in  bit_vector(3 downto 0);
-        b : in  bit_vector(3 downto 0);
-        q : out bit_vector(3 downto 0);
-        r : out bit_vector(3 downto 0)
+        clk           : in  bit;
+        rst           : in  bit;
+        start         : in  bit;
+
+        a             : in  bit_vector(7 downto 0);
+        b             : in  bit_vector(7 downto 0);
+
+        q             : out bit_vector(7 downto 0);
+        r             : out bit_vector(7 downto 0);
+
+        div_zero      : out bit;
+        display_error : out bit;
+        busy          : out bit;
+        done          : out bit
     );
 end entity;
 
-architecture structure of divider is
+architecture behavior of divider is
 
-    component CR_add_sub is
-        port(
-            a    : in  bit_vector(3 downto 0);
-            b    : in  bit_vector(3 downto 0);
-            mode : in  bit;
-            s    : out bit_vector(3 downto 0);
-            co   : out bit
-        );
-    end component;
+    type state_type is (IDLE, CALC, DONE_STATE);
+    signal state : state_type := IDLE;
 
-    signal r0, r1, r2, r3, r4, r5, r6, r7 : bit_vector(3 downto 0);
-    signal r8, r9, r10, r11, r12, r13, r14, r15 : bit_vector(3 downto 0);
+    signal remainder_r : bit_vector(7 downto 0) := "00000000";
+    signal divisor_r   : bit_vector(7 downto 0) := "00000000";
+    signal quotient_r  : bit_vector(7 downto 0) := "00000000";
 
-    signal c1, c2, c3, c4, c5, c6, c7, c8 : bit;
-    signal c9, c10, c11, c12, c13, c14, c15 : bit;
+    signal q_sign : bit := '0';
+    signal r_sign : bit := '0';
+
+    function add8_ci(x  : bit_vector(7 downto 0);
+                     y  : bit_vector(7 downto 0);
+                     ci : bit) return bit_vector is
+        variable result : bit_vector(7 downto 0);
+        variable c      : bit;
+    begin
+        c := ci;
+
+        for i in 0 to 7 loop
+            result(i) := x(i) xor y(i) xor c;
+            c := (x(i) and y(i)) or (x(i) and c) or (y(i) and c);
+        end loop;
+
+        return result;
+    end function;
+
+    function twos_comp8(x : bit_vector(7 downto 0)) return bit_vector is
+        variable inv : bit_vector(7 downto 0);
+    begin
+        for i in 0 to 7 loop
+            inv(i) := not x(i);
+        end loop;
+
+        return add8_ci(inv, "00000001", '0');
+    end function;
+
+    function abs8(x : bit_vector(7 downto 0)) return bit_vector is
+    begin
+        if x(7) = '1' then
+            return twos_comp8(x);
+        else
+            return x;
+        end if;
+    end function;
+
+    function ge8(x : bit_vector(7 downto 0);
+                 y : bit_vector(7 downto 0)) return boolean is
+    begin
+        for i in 7 downto 0 loop
+            if x(i) = '1' and y(i) = '0' then
+                return true;
+            elsif x(i) = '0' and y(i) = '1' then
+                return false;
+            end if;
+        end loop;
+
+        return true;
+    end function;
+
+    function gt8(x : bit_vector(7 downto 0);
+                 y : bit_vector(7 downto 0)) return boolean is
+    begin
+        if ge8(x, y) and x /= y then
+            return true;
+        else
+            return false;
+        end if;
+    end function;
+
+    function sub8(x : bit_vector(7 downto 0);
+                  y : bit_vector(7 downto 0)) return bit_vector is
+        variable y_inv : bit_vector(7 downto 0);
+    begin
+        for i in 0 to 7 loop
+            y_inv(i) := not y(i);
+        end loop;
+
+        return add8_ci(x, y_inv, '1');
+    end function;
+
+    function inc8(x : bit_vector(7 downto 0)) return bit_vector is
+    begin
+        return add8_ci(x, "00000001", '0');
+    end function;
 
 begin
 
-    r0 <= a;
-
-    SUB1  : CR_add_sub port map(r0,  b, '1', r1,  c1);
-    SUB2  : CR_add_sub port map(r1,  b, '1', r2,  c2);
-    SUB3  : CR_add_sub port map(r2,  b, '1', r3,  c3);
-    SUB4  : CR_add_sub port map(r3,  b, '1', r4,  c4);
-    SUB5  : CR_add_sub port map(r4,  b, '1', r5,  c5);
-    SUB6  : CR_add_sub port map(r5,  b, '1', r6,  c6);
-    SUB7  : CR_add_sub port map(r6,  b, '1', r7,  c7);
-    SUB8  : CR_add_sub port map(r7,  b, '1', r8,  c8);
-    SUB9  : CR_add_sub port map(r8,  b, '1', r9,  c9);
-    SUB10 : CR_add_sub port map(r9,  b, '1', r10, c10);
-    SUB11 : CR_add_sub port map(r10, b, '1', r11, c11);
-    SUB12 : CR_add_sub port map(r11, b, '1', r12, c12);
-    SUB13 : CR_add_sub port map(r12, b, '1', r13, c13);
-    SUB14 : CR_add_sub port map(r13, b, '1', r14, c14);
-    SUB15 : CR_add_sub port map(r14, b, '1', r15, c15);
-
-    process(a, b, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15)
+    process(clk, rst)
+        variable q_signed : bit_vector(7 downto 0);
+        variable r_signed : bit_vector(7 downto 0);
+        variable err      : bit;
     begin
-        if b = "0000" then
-    q <= "1111";
-    r <= "1111";
+        if rst = '1' then
 
-	elsif c1 = '0' then
-	    q <= "0000";
-	    r <= r0;
-	
-	elsif c2 = '0' then
-	    q <= "0001";
-	    r <= r1;
+            state       <= IDLE;
+            remainder_r <= "00000000";
+            divisor_r   <= "00000000";
+            quotient_r  <= "00000000";
+            q_sign      <= '0';
+            r_sign      <= '0';
 
-	elsif c3 = '0' then
-	    q <= "0010";
-	    r <= r2;
+            q <= "00000000";
+            r <= "00000000";
 
-	elsif c4 = '0' then
-	    q <= "0011";
-	    r <= r3;
+            div_zero      <= '0';
+            display_error <= '0';
+            busy          <= '0';
+            done          <= '0';
 
-	elsif c5 = '0' then
-	    q <= "0100";
-	    r <= r4;
+        elsif clk'event and clk = '1' then
 
-	elsif c6 = '0' then
-	    q <= "0101";
-	    r <= r5;
+            done <= '0';
 
-	elsif c7 = '0' then
-	    q <= "0110";
-	    r <= r6;
+            case state is
 
-	elsif c8 = '0' then
-	    q <= "0111";
-	    r <= r7;
+                when IDLE =>
 
-	elsif c9 = '0' then
-	    q <= "1000";
-	    r <= r8;
+                    busy <= '0';
 
-	elsif c10 = '0' then
-	    q <= "1001";
-	    r <= r9;
-		
-	elsif c11 = '0' then
-	    q <= "1010";
-	    r <= r10;
+                    if start = '1' then
 
-	elsif c12 = '0' then
-	    q <= "1011";
-	    r <= r11;
+                        if b = "00000000" then
 
-	elsif c13 = '0' then
-	    q <= "1100";
-	    r <= r12;
+                            q <= "00000000";
+                            r <= "00000000";
 
-	elsif c14 = '0' then
-	    q <= "1101";
-	    r <= r13;
+                            div_zero      <= '1';
+                            display_error <= '1';
+                            busy          <= '0';
+                            done          <= '1';
+                            state         <= IDLE;
 
-	elsif c15 = '0' then
-	    q <= "1110";
-	    r <= r14;
+                        else
 
-	else
-	    q <= "1111";
-	    r <= r15;
-	end if;
+                            remainder_r <= abs8(a);
+                            divisor_r   <= abs8(b);
+                            quotient_r  <= "00000000";
+
+                            q_sign <= a(7) xor b(7);
+                            r_sign <= a(7);
+
+                            div_zero      <= '0';
+                            display_error <= '0';
+                            busy          <= '1';
+                            state         <= CALC;
+
+                        end if;
+
+                    end if;
+
+                when CALC =>
+
+                    busy <= '1';
+
+                    if ge8(remainder_r, divisor_r) then
+                        remainder_r <= sub8(remainder_r, divisor_r);
+                        quotient_r  <= inc8(quotient_r);
+                    else
+                        state <= DONE_STATE;
+                    end if;
+
+                when DONE_STATE =>
+
+                    busy <= '0';
+                    done <= '1';
+
+                    if q_sign = '1' then
+                        q_signed := twos_comp8(quotient_r);
+                    else
+                        q_signed := quotient_r;
+                    end if;
+
+                    if r_sign = '1' and remainder_r /= "00000000" then
+                        r_signed := twos_comp8(remainder_r);
+                    else
+                        r_signed := remainder_r;
+                    end if;
+
+                    q <= q_signed;
+                    r <= r_signed;
+
+                    err := '0';
+
+                    -- Signed quotient overflow:
+                    -- Positive quotient cannot have magnitude > 127.
+                    -- Negative quotient cannot have magnitude > 128.
+                    if q_sign = '0' and quotient_r(7) = '1' then
+                        err := '1';
+                    elsif q_sign = '1' and gt8(quotient_r, "10000000") then
+                        err := '1';
+                    end if;
+
+                    -- Display rule using decimal point:
+                    -- quotient magnitude must be 0..99
+                    -- remainder magnitude must be 0..9
+                    if gt8(quotient_r, "01100011") then -- > 99
+                        err := '1';
+                    elsif gt8(remainder_r, "00001001") then -- > 9
+                        err := '1';
+                    end if;
+
+                    display_error <= err;
+
+                    state <= IDLE;
+
+            end case;
+
+        end if;
     end process;
 
 end architecture;

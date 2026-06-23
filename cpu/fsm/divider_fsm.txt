@@ -1,0 +1,23 @@
+@startuml
+title Signed Multi-Cycle Divider FSM
+
+[*] --> IDLE
+
+IDLE --> CHECK_ZERO : start = 1
+
+CHECK_ZERO --> ERROR : divisor = 0
+CHECK_ZERO --> LOAD : divisor /= 0
+
+LOAD --> CALC : remainder = abs(A)\ndivisor = abs(B)\nquotient = 0
+
+CALC --> CALC : remainder >= divisor\nremainder -= divisor\nquotient++
+
+CALC --> FINISH : remainder < divisor
+
+FINISH --> DONE : apply quotient sign\napply remainder sign\ncheck display limits
+
+ERROR --> DONE : div_zero = 1\ndisplay_error = 1
+
+DONE --> IDLE : done = 1
+
+@enduml

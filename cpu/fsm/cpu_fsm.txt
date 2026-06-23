@@ -1,0 +1,18 @@
+@startuml
+title CPU Control FSM
+
+[*] --> IDLE
+
+IDLE --> LOAD_REGISTER : btn_exec && mode=LOAD
+IDLE --> START_ALU : btn_exec && mode=EXECUTE
+
+LOAD_REGISTER --> IDLE : reg[dest] := load_value
+
+START_ALU --> WAIT_ALU : latch A, B, op\nalu_start := 1
+
+WAIT_ALU --> WAIT_ALU : alu_done = 0
+WAIT_ALU --> WRITEBACK : alu_done = 1
+
+WRITEBACK --> IDLE : reg[dest] := alu_result\nstore flags/remainder
+
+@enduml

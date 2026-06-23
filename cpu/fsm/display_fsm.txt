@@ -1,0 +1,16 @@
+@startuml
+title Seven-Segment Display Refresh FSM
+
+[*] --> DIGIT0
+
+DIGIT0 --> DIGIT1 : refresh_tick
+DIGIT1 --> DIGIT2 : refresh_tick
+DIGIT2 --> DIGIT3 : refresh_tick
+DIGIT3 --> DIGIT0 : refresh_tick
+
+state DIGIT0 : enable an[0]\nshow ones/remainder
+state DIGIT1 : enable an[1]\nshow tens or quotient ones\nturn dp on for division
+state DIGIT2 : enable an[2]\nshow hundreds/tens/minus
+state DIGIT3 : enable an[3]\nshow minus or blank
+
+@enduml

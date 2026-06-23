@@ -8,6 +8,7 @@ entity cpu_top is
 
         led      : out bit_vector(7 downto 0);
         seg      : out bit_vector(6 downto 0);
+        dp       : out bit;
         an       : out bit_vector(7 downto 0)
     );
 end entity;
@@ -16,11 +17,23 @@ architecture structure of cpu_top is
 
     component alu is
         port(
-            a      : in  bit_vector(3 downto 0);
-            b      : in  bit_vector(3 downto 0);
-            op     : in  bit_vector(1 downto 0);
-            result : out bit_vector(7 downto 0);
-            carry  : out bit
+            clk       : in  bit;
+            rst       : in  bit;
+            start     : in  bit;
+
+            a         : in  bit_vector(7 downto 0);
+            b         : in  bit_vector(7 downto 0);
+            op        : in  bit_vector(1 downto 0);
+
+            result    : out bit_vector(7 downto 0);
+            remainder : out bit_vector(7 downto 0);
+
+            carry     : out bit;
+            overflow  : out bit;
+            div_zero  : out bit;
+
+            busy      : out bit;
+            done      : out bit
         );
     end component;
 
@@ -42,6 +55,9 @@ architecture structure of cpu_top is
     end component;
 
     type register_array is array (0 to 3) of bit_vector(7 downto 0);
+    type cpu_state_type is (CPU_IDLE, CPU_WAIT_ALU);
+
+    signal cpu_state : cpu_state_type := CPU_IDLE;
 
     signal reg_file : register_array := (
         "00000000",
@@ -52,46 +68,114 @@ architecture structure of cpu_top is
 
     signal mode_select : bit;
 
-    signal load_value  : bit_vector(7 downto 0);
-    signal view_value  : bit_vector(7 downto 0);
+    signal load_positive : bit_vector(7 downto 0);
+    signal load_value    : bit_vector(7 downto 0);
 
+    signal view_value  : bit_vector(7 downto 0);
     signal src_a_value : bit_vector(7 downto 0);
     signal src_b_value : bit_vector(7 downto 0);
 
-    signal a_in        : bit_vector(3 downto 0);
-    signal b_in        : bit_vector(3 downto 0);
-    signal op_in       : bit_vector(1 downto 0);
+    signal alu_a_reg  : bit_vector(7 downto 0) := "00000000";
+    signal alu_b_reg  : bit_vector(7 downto 0) := "00000000";
+    signal alu_op_reg : bit_vector(1 downto 0) := "00";
 
-    signal alu_result  : bit_vector(7 downto 0);
-    signal carry_temp  : bit;
+    signal op_in : bit_vector(1 downto 0);
 
-    signal bcd_hundreds  : bit_vector(3 downto 0);
-    signal bcd_tens      : bit_vector(3 downto 0);
-    signal bcd_ones      : bit_vector(3 downto 0);
-    signal overflow_flag : bit;
+    signal alu_start     : bit := '0';
+    signal alu_result    : bit_vector(7 downto 0);
+    signal alu_remainder : bit_vector(7 downto 0);
+    signal carry_temp    : bit;
+    signal overflow_temp : bit;
+    signal div_zero_temp : bit;
+    signal alu_busy      : bit;
+    signal alu_done      : bit;
+
+    signal pending_dest : bit_vector(1 downto 0) := "00";
+
+    signal stored_op      : bit_vector(1 downto 0) := "00";
+    signal last_dest      : bit_vector(1 downto 0) := "00";
+    signal last_remainder : bit_vector(7 downto 0) := "00000000";
+    signal last_overflow  : bit := '0';
+    signal last_div_zero  : bit := '0';
+
+    signal display_value    : bit_vector(7 downto 0);
+    signal display_negative : bit;
+
+    signal rem_display_value : bit_vector(7 downto 0);
+    signal rem_negative      : bit;
+
+    signal bcd_hundreds : bit_vector(3 downto 0);
+    signal bcd_tens     : bit_vector(3 downto 0);
+    signal bcd_ones     : bit_vector(3 downto 0);
+    signal bcd_overflow : bit;
+
+    signal rem_hundreds : bit_vector(3 downto 0);
+    signal rem_tens     : bit_vector(3 downto 0);
+    signal rem_ones     : bit_vector(3 downto 0);
+    signal rem_overflow : bit;
 
     signal seg_ones     : bit_vector(6 downto 0);
     signal seg_tens     : bit_vector(6 downto 0);
     signal seg_hundreds : bit_vector(6 downto 0);
 
+    signal seg_rem_ones : bit_vector(6 downto 0);
+
     signal display_select  : bit_vector(1 downto 0) := "00";
     signal refresh_counter : integer range 0 to 49999 := 0;
+
+    signal btn_prev : bit := '0';
+
+    signal display_error    : bit;
+    signal div_display_mode : bit;
+
+    constant SEG_BLANK : bit_vector(6 downto 0) := "1111111";
+    constant SEG_MINUS : bit_vector(6 downto 0) := "0111111";
+    constant SEG_O     : bit_vector(6 downto 0) := "1000000";
+    constant SEG_F     : bit_vector(6 downto 0) := "0001110";
+
+    function add8_ci(x  : bit_vector(7 downto 0);
+                     y  : bit_vector(7 downto 0);
+                     ci : bit) return bit_vector is
+        variable result : bit_vector(7 downto 0);
+        variable c      : bit;
+    begin
+        c := ci;
+
+        for i in 0 to 7 loop
+            result(i) := x(i) xor y(i) xor c;
+            c := (x(i) and y(i)) or (x(i) and c) or (y(i) and c);
+        end loop;
+
+        return result;
+    end function;
+
+    function twos_comp8(x : bit_vector(7 downto 0)) return bit_vector is
+        variable inv : bit_vector(7 downto 0);
+    begin
+        for i in 0 to 7 loop
+            inv(i) := not x(i);
+        end loop;
+
+        return add8_ci(inv, "00000001", '0');
+    end function;
 
 begin
 
     mode_select <= sw(8);
 
     -- LOAD MODE:
-    -- SW[3:0] = unsigned input value from 0 to 15
-    -- Stored as an 8-bit value.
-    load_value <= "0000" & sw(3 downto 0);
+    -- SW7 = sign: 0 positive, 1 negative
+    -- SW3..0 = magnitude
+    load_positive <= "0000" & sw(3 downto 0);
+
+    load_value <= load_positive when sw(7) = '0' else
+                  twos_comp8(load_positive);
 
     -- EXECUTE MODE:
-    -- SW[7:6] selects operation.
-    -- 00 = ADD, 01 = SUB, 10 = MUL, 11 = DIV
+    -- SW7..6 = operation
+    -- 00 ADD, 01 SUB, 10 MUL, 11 DIV
     op_in <= sw(7 downto 6);
 
-    -- Source register A selected by SW[1:0]
     process(sw, reg_file)
     begin
         case sw(1 downto 0) is
@@ -102,7 +186,6 @@ begin
         end case;
     end process;
 
-    -- Source register B selected by SW[3:2]
     process(sw, reg_file)
     begin
         case sw(3 downto 2) is
@@ -113,21 +196,27 @@ begin
         end case;
     end process;
 
-    -- Current ALU is still 4-bit.
-    -- It only uses the lower 4 bits of each selected 8-bit register.
-    a_in <= src_a_value(3 downto 0);
-    b_in <= src_b_value(3 downto 0);
-
     ALU_UNIT : alu
         port map(
-            a      => a_in,
-            b      => b_in,
-            op     => op_in,
-            result => alu_result,
-            carry  => carry_temp
+            clk       => clk,
+            rst       => btn_rst,
+            start     => alu_start,
+
+            a         => alu_a_reg,
+            b         => alu_b_reg,
+            op        => alu_op_reg,
+
+            result    => alu_result,
+            remainder => alu_remainder,
+
+            carry     => carry_temp,
+            overflow  => overflow_temp,
+            div_zero  => div_zero_temp,
+
+            busy      => alu_busy,
+            done      => alu_done
         );
 
-    -- Register write process
     process(clk, btn_rst)
     begin
         if btn_rst = '1' then
@@ -137,42 +226,88 @@ begin
             reg_file(2) <= "00000000";
             reg_file(3) <= "00000000";
 
+            alu_a_reg  <= "00000000";
+            alu_b_reg  <= "00000000";
+            alu_op_reg <= "00";
+
+            alu_start    <= '0';
+            pending_dest <= "00";
+            cpu_state    <= CPU_IDLE;
+            btn_prev     <= '0';
+
+            stored_op      <= "00";
+            last_dest      <= "00";
+            last_remainder <= "00000000";
+            last_overflow  <= '0';
+            last_div_zero  <= '0';
+
         elsif clk'event and clk = '1' then
 
-            if btn_exec = '1' then
+            alu_start <= '0';
 
-                if mode_select = '0' then
+            case cpu_state is
 
-                    -- LOAD MODE:
-                    -- SW[5:4] selects which register receives the manual input value.
-                    case sw(5 downto 4) is
-                        when "00"   => reg_file(0) <= load_value;
-                        when "01"   => reg_file(1) <= load_value;
-                        when "10"   => reg_file(2) <= load_value;
-                        when others => reg_file(3) <= load_value;
-                    end case;
+                when CPU_IDLE =>
 
-                else
+                    if btn_exec = '1' and btn_prev = '0' then
 
-                    -- EXECUTE MODE:
-                    -- SW[5:4] selects destination register for ALU result.
-                    case sw(5 downto 4) is
-                        when "00"   => reg_file(0) <= alu_result;
-                        when "01"   => reg_file(1) <= alu_result;
-                        when "10"   => reg_file(2) <= alu_result;
-                        when others => reg_file(3) <= alu_result;
-                    end case;
+                        if mode_select = '0' then
 
-                end if;
+                            case sw(5 downto 4) is
+                                when "00"   => reg_file(0) <= load_value;
+                                when "01"   => reg_file(1) <= load_value;
+                                when "10"   => reg_file(2) <= load_value;
+                                when others => reg_file(3) <= load_value;
+                            end case;
 
-            end if;
+                            stored_op      <= "00";
+                            last_remainder <= "00000000";
+                            last_overflow  <= '0';
+                            last_div_zero  <= '0';
+                            last_dest      <= sw(5 downto 4);
+
+                        else
+
+                            alu_a_reg    <= src_a_value;
+                            alu_b_reg    <= src_b_value;
+                            alu_op_reg   <= op_in;
+                            pending_dest <= sw(5 downto 4);
+
+                            alu_start <= '1';
+                            cpu_state <= CPU_WAIT_ALU;
+
+                        end if;
+
+                    end if;
+
+                when CPU_WAIT_ALU =>
+
+                    if alu_done = '1' then
+
+                        case pending_dest is
+                            when "00"   => reg_file(0) <= alu_result;
+                            when "01"   => reg_file(1) <= alu_result;
+                            when "10"   => reg_file(2) <= alu_result;
+                            when others => reg_file(3) <= alu_result;
+                        end case;
+
+                        stored_op      <= alu_op_reg;
+                        last_dest      <= pending_dest;
+                        last_remainder <= alu_remainder;
+                        last_overflow  <= overflow_temp;
+                        last_div_zero  <= div_zero_temp;
+
+                        cpu_state <= CPU_IDLE;
+
+                    end if;
+
+            end case;
+
+            btn_prev <= btn_exec;
 
         end if;
     end process;
 
-    -- Display selected register.
-    -- In LOAD mode, SW[5:4] selects the register to view/load.
-    -- In EXECUTE mode, SW[5:4] selects the destination register to view.
     process(sw, reg_file)
     begin
         case sw(5 downto 4) is
@@ -183,13 +318,33 @@ begin
         end case;
     end process;
 
-    BCD_CONV : binary_to_bcd
+    -- Always signed display.
+    display_negative <= '1' when view_value(7) = '1' else '0';
+
+    display_value <= twos_comp8(view_value) when display_negative = '1' else
+                     view_value;
+
+    rem_negative <= '1' when last_remainder(7) = '1' else '0';
+
+    rem_display_value <= twos_comp8(last_remainder) when rem_negative = '1' else
+                         last_remainder;
+
+    BCD_NORMAL : binary_to_bcd
         port map(
-            bin      => view_value,
+            bin      => display_value,
             hundreds => bcd_hundreds,
             tens     => bcd_tens,
             ones     => bcd_ones,
-            overflow => overflow_flag
+            overflow => bcd_overflow
+        );
+
+    BCD_REM : binary_to_bcd
+        port map(
+            bin      => rem_display_value,
+            hundreds => rem_hundreds,
+            tens     => rem_tens,
+            ones     => rem_ones,
+            overflow => rem_overflow
         );
 
     DEC_ONES : seven_segment_decoder
@@ -210,20 +365,26 @@ begin
             seg => seg_hundreds
         );
 
-    -- Display refresh.
-    -- display_select = 00 -> an[0] ones
-    -- display_select = 01 -> an[1] tens
-    -- display_select = 10 -> an[2] hundreds
-    -- display_select = 11 -> an[3] blank for now
+    DEC_REM_ONES : seven_segment_decoder
+        port map(
+            bin => rem_ones,
+            seg => seg_rem_ones
+        );
+
+    div_display_mode <= '1' when mode_select = '1' and stored_op = "11" and sw(5 downto 4) = last_dest else
+                        '0';
+
+    display_error <= '1' when mode_select = '1' and sw(5 downto 4) = last_dest and
+                              (last_overflow = '1' or last_div_zero = '1') else
+                     '0';
+
     process(clk, btn_rst)
     begin
         if btn_rst = '1' then
-
             refresh_counter <= 0;
             display_select  <= "00";
 
         elsif clk'event and clk = '1' then
-
             if refresh_counter = 49999 then
                 refresh_counter <= 0;
 
@@ -233,83 +394,168 @@ begin
                     when "10"   => display_select <= "11";
                     when others => display_select <= "00";
                 end case;
-
             else
                 refresh_counter <= refresh_counter + 1;
             end if;
-
         end if;
     end process;
 
-    -- Display output.
-    -- an[0] = ones
-    -- an[1] = tens
-    -- an[2] = hundreds
-    -- an[3] = blank for now
-    process(display_select, seg_ones, seg_tens, seg_hundreds,
-            bcd_tens, bcd_hundreds, overflow_flag)
+    process(display_select, display_error, div_display_mode,
+            seg_ones, seg_tens, seg_hundreds,
+            bcd_tens, bcd_hundreds,
+            display_negative,
+            seg_rem_ones)
     begin
 
-        if overflow_flag = '1' then
+        -- Decimal point is active-low.
+        dp <= '1';
+
+        if display_error = '1' then
+
+            -- Display OF
+            case display_select is
+                when "00" =>
+                    seg <= SEG_F;
+                    an  <= "11111110";
+                    dp  <= '1';
+
+                when "01" =>
+                    seg <= SEG_O;
+                    an  <= "11111101";
+                    dp  <= '1';
+
+                when others =>
+                    seg <= SEG_BLANK;
+                    an  <= "11111111";
+                    dp  <= '1';
+            end case;
+
+        elsif div_display_mode = '1' then
+
+            -- Division display:
+            -- Positive examples:
+            --   1.8
+            --   12.3
+            --
+            -- Negative examples:
+            --   -1.8
+            --   -12.3
+            --
+            -- an[0] = remainder ones
+            -- an[1] = quotient ones with decimal point
+            -- an[2] = quotient tens OR minus for one-digit negative quotient
+            -- an[3] = minus for two-digit negative quotient
 
             case display_select is
 
                 when "00" =>
-                    seg <= "0001110"; -- F
-                    an  <= "11111110"; -- an[0]
+                    -- Remainder digit
+                    seg <= seg_rem_ones;
+                    an  <= "11111110";
+                    dp  <= '1';
 
                 when "01" =>
-                    seg <= "1000000"; -- O / 0 shape
-                    an  <= "11111101"; -- an[1]
+                    -- Quotient ones digit with decimal point ON
+                    seg <= seg_ones;
+                    an  <= "11111101";
+                    dp  <= '0';
+
+                when "10" =>
+                    -- Quotient tens, or minus for -1.0 to -9.9
+                    if bcd_tens = "0000" then
+                        if display_negative = '1' then
+                            seg <= SEG_MINUS;
+                        else
+                            seg <= SEG_BLANK;
+                        end if;
+                    else
+                        seg <= seg_tens;
+                    end if;
+
+                    an <= "11111011";
+                    dp <= '1';
 
                 when others =>
-                    seg <= "1111111"; -- blank
-                    an  <= "11111111"; -- all off
+                    -- Minus for -10.0 to -99.9
+                    if display_negative = '1' and bcd_tens /= "0000" then
+                        seg <= SEG_MINUS;
+                    else
+                        seg <= SEG_BLANK;
+                    end if;
+
+                    an <= "11110111";
+                    dp <= '1';
 
             end case;
 
         else
 
+            -- Normal signed display:
+            -- +2    ->    2
+            -- -2    ->   -2
+            -- -15   ->  -15
+            -- -128  -> -128
+            --
+            -- an[0] = ones
+            -- an[1] = tens OR minus for -1 to -9
+            -- an[2] = hundreds OR minus for -10 to -99
+            -- an[3] = minus for -100 to -128
+
             case display_select is
 
                 when "00" =>
-                    -- Ones digit is always shown.
+                    -- Ones digit
                     seg <= seg_ones;
-                    an  <= "11111110"; -- an[0]
+                    an  <= "11111110";
+                    dp  <= '1';
 
                 when "01" =>
-                    -- Tens digit is blank if hundreds = 0 and tens = 0.
+                    -- Tens digit, or minus sign for -1 to -9
                     if bcd_hundreds = "0000" and bcd_tens = "0000" then
-                        seg <= "1111111"; -- blank
+                        if display_negative = '1' then
+                            seg <= SEG_MINUS;
+                        else
+                            seg <= SEG_BLANK;
+                        end if;
                     else
                         seg <= seg_tens;
                     end if;
 
-                    an <= "11111101"; -- an[1]
+                    an <= "11111101";
+                    dp <= '1';
 
                 when "10" =>
-                    -- Hundreds digit is blank if hundreds = 0.
+                    -- Hundreds digit, or minus sign for -10 to -99
                     if bcd_hundreds = "0000" then
-                        seg <= "1111111"; -- blank
+                        if display_negative = '1' and bcd_tens /= "0000" then
+                            seg <= SEG_MINUS;
+                        else
+                            seg <= SEG_BLANK;
+                        end if;
                     else
                         seg <= seg_hundreds;
                     end if;
 
-                    an <= "11111011"; -- an[2]
+                    an <= "11111011";
+                    dp <= '1';
 
                 when others =>
-                    -- Fourth digit is blank for now.
-                    seg <= "1111111";
-                    an  <= "11110111"; -- an[3]
+                    -- Minus sign for -100 to -128
+                    if display_negative = '1' and bcd_hundreds /= "0000" then
+                        seg <= SEG_MINUS;
+                    else
+                        seg <= SEG_BLANK;
+                    end if;
+
+                    an <= "11110111";
+                    dp <= '1';
 
             end case;
 
         end if;
     end process;
 
-    -- Temporary LED debug mapping:
-    -- LEDs directly show switch positions SW0 to SW7.
-    -- SW8 is mode but is not shown yet.
+    -- LEDs show switches for debugging.
     led <= sw(7 downto 0);
 
 end architecture;

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Thu Jun 18 16:01:21 2026
+| Date         : Tue Jun 23 17:53:51 2026
 | Host         : LAPTOP-C5OCR9QS running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file cpu_top_control_sets_placed.rpt
 | Design       : cpu_top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     5 |
-|    Minimum number of control sets                        |     5 |
+| Total control sets                                       |    15 |
+|    Minimum number of control sets                        |    15 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |     5 |
+| Unused register locations in slices containing registers |    35 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     5 |
+| Total control sets |    15 |
 | >= 0 to < 4        |     0 |
-| >= 4 to < 6        |     0 |
+| >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     4 |
-| >= 10 to < 12      |     0 |
-| >= 12 to < 14      |     0 |
+| >= 8 to < 10       |     6 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     1 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     1 |
+| >= 16              |     6 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -59,10 +59,10 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               0 |            0 |
-| No           | No                    | Yes                    |              19 |            5 |
+| No           | No                    | Yes                    |              36 |           14 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              32 |           18 |
+| Yes          | No                    | Yes                    |             161 |           59 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
@@ -70,14 +70,24 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+------------------------+------------------+------------------+----------------+--------------+
-|  Clock Signal  |      Enable Signal     | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+------------------------+------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG | reg_file[3][7]_i_1_n_0 | btn_rst_IBUF     |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG | reg_file[2]            | btn_rst_IBUF     |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG | reg_file[0]            | btn_rst_IBUF     |                4 |              8 |         2.00 |
-|  clk_IBUF_BUFG | reg_file[1]            | btn_rst_IBUF     |                5 |              8 |         1.60 |
-|  clk_IBUF_BUFG |                        | btn_rst_IBUF     |                5 |             19 |         3.80 |
-+----------------+------------------------+------------------+------------------+----------------+--------------+
++----------------+--------------------------------------------+------------------+------------------+----------------+--------------+
+|  Clock Signal  |                Enable Signal               | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------------+------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | ALU_UNIT/MULT/count[3]_i_1_n_0             | btn_rst_IBUF     |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | ALU_UNIT/MULT/acc[7]_i_1_n_0               | btn_rst_IBUF     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | ALU_UNIT/cpu_state_reg[0]                  | btn_rst_IBUF     |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG | ALU_UNIT/cpu_state_reg_0[0]                | btn_rst_IBUF     |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG | ALU_UNIT/cpu_state_reg_2[0]                | btn_rst_IBUF     |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | ALU_UNIT/cpu_state_reg_1[0]                | btn_rst_IBUF     |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | ALU_UNIT/MULT/FSM_onehot_state_reg_n_0_[2] | btn_rst_IBUF     |                2 |              9 |         4.50 |
+|  clk_IBUF_BUFG | ALU_UNIT/DIV_UNIT/q_sign                   | btn_rst_IBUF     |                5 |             10 |         2.00 |
+|  clk_IBUF_BUFG | ALU_UNIT/E[0]                              | btn_rst_IBUF     |                5 |             12 |         2.40 |
+|  clk_IBUF_BUFG | ALU_UNIT/DIV_UNIT/done_i_1_n_0             | btn_rst_IBUF     |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | ALU_UNIT/DIV_UNIT/quotient_r[7]_i_1_n_0    | btn_rst_IBUF     |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | ALU_UNIT/MULT/multiplicand[7]_i_1_n_0      | btn_rst_IBUF     |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | ALU_UNIT/DIV_UNIT/E[0]                     | btn_rst_IBUF     |                9 |             18 |         2.00 |
+|  clk_IBUF_BUFG | pending_dest                               | btn_rst_IBUF     |                9 |             20 |         2.22 |
+|  clk_IBUF_BUFG |                                            | btn_rst_IBUF     |               14 |             36 |         2.57 |
++----------------+--------------------------------------------+------------------+------------------+----------------+--------------+
 
 

@@ -1,0 +1,18 @@
+@startuml
+title Signed Multi-Cycle Multiplier FSM
+
+[*] --> IDLE
+
+IDLE --> LOAD : start = 1
+
+LOAD --> CALC : abs(A), abs(B)\nresult_sign = A.sign XOR B.sign\ncount = 0
+
+CALC --> CALC : count < 8\nif B[0]=1: acc += multiplicand\nmultiplicand <<= 1\nB >>= 1\ncount++
+
+CALC --> FINISH : count = 8
+
+FINISH --> DONE : apply sign\ncheck -128..127 overflow
+
+DONE --> IDLE : done = 1
+
+@enduml

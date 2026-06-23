@@ -3,8 +3,8 @@
 # SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
 # IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
 # SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Thu Jun 18 15:59:48 2026
-# Process ID         : 22240
+# Start of session at: Tue Jun 23 17:52:19 2026
+# Process ID         : 7768
 # Current directory  : C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/synth_1
 # Command line       : vivado.exe -log cpu_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu_top.tcl
 # Log file           : C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/synth_1/cpu_top.vds
@@ -17,12 +17,12 @@
 # CPU Physical cores : 6
 # CPU Logical cores  : 12
 # Host memory        : 17012 MB
-# Swap memory        : 4160 MB
-# Total Virtual      : 21173 MB
-# Available Virtual  : 5498 MB
+# Swap memory        : 4563 MB
+# Total Virtual      : 21575 MB
+# Available Virtual  : 5992 MB
 #-----------------------------------------------------------
 source cpu_top.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 493.414 ; gain = 213.656
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 491.922 ; gain = 211.367
 Command: read_checkpoint -auto_incremental -incremental C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.srcs/utils_1/imports/synth_1/cpu_top.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.srcs/utils_1/imports/synth_1/cpu_top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -31,18 +31,20 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 12788
+INFO: [Synth 8-7075] Helper process launched with PID 19624
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1196.391 ; gain = 492.449
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1196.461 ; gain = 494.914
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'cpu_top' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:15]
-INFO: [Synth 8-3491] module 'alu' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:1' bound to instance 'ALU_UNIT' of component 'alu' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:121]
-INFO: [Synth 8-638] synthesizing module 'alu' [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:11]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'ADDSUB' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'cpu_top' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:16]
+INFO: [Synth 8-3491] module 'alu' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:1' bound to instance 'ALU_UNIT' of component 'alu' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:199]
+INFO: [Synth 8-638] synthesizing module 'alu' [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:23]
+INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'ADDSUB' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:114]
 INFO: [Synth 8-638] synthesizing module 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:11]
-INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'U1' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:38]
+INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'ADD_LOW' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:37]
 INFO: [Synth 8-638] synthesizing module 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:10]
 INFO: [Synth 8-3491] module 'full_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd:1' bound to instance 'FA0' of component 'full_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:19]
 INFO: [Synth 8-638] synthesizing module 'full_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd:6]
@@ -55,78 +57,43 @@ INFO: [Synth 8-3491] module 'full_adder' declared at 'C:/git/Hardware-Engineerin
 INFO: [Synth 8-3491] module 'full_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd:1' bound to instance 'FA2' of component 'full_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:37]
 INFO: [Synth 8-3491] module 'full_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/full_adder.vhd:1' bound to instance 'FA3' of component 'full_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:46]
 INFO: [Synth 8-256] done synthesizing module 'ripple_carry_adder' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:10]
+INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'ADD_HIGH' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:46]
 INFO: [Synth 8-256] done synthesizing module 'CR_add_sub' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:11]
-INFO: [Synth 8-3491] module 'multiplier' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:1' bound to instance 'MULT' of component 'multiplier' [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:59]
-INFO: [Synth 8-638] synthesizing module 'multiplier' [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:9]
-INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'ADD01_LOW' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:73]
-INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'ADD01_HIGH' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:76]
-INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'ADD012_LOW' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:80]
-INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'ADD012_HIGH' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:83]
-INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'ADDF_LOW' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:87]
-INFO: [Synth 8-3491] module 'ripple_carry_adder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/ripple_carry_adder.vhd:1' bound to instance 'ADDF_HIGH' of component 'ripple_carry_adder' [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:90]
-INFO: [Synth 8-256] done synthesizing module 'multiplier' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:9]
-INFO: [Synth 8-3491] module 'divider' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:1' bound to instance 'DIV_UNIT' of component 'divider' [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:66]
-INFO: [Synth 8-638] synthesizing module 'divider' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:10]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB1' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:32]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB2' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:33]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB3' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:34]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB4' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:35]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB5' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:36]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB6' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:37]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB7' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:38]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB8' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:39]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB9' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:40]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB10' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:41]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB11' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:42]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB12' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:43]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB13' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:44]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB14' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:45]
-INFO: [Synth 8-3491] module 'CR_add_sub' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/CR_add_sub.vhd:1' bound to instance 'SUB15' of component 'CR_add_sub' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:46]
-WARNING: [Synth 8-614] signal 'r0' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r1' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r2' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r3' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r4' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r5' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r6' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r7' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r8' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r9' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r10' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r11' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r12' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r13' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r14' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-WARNING: [Synth 8-614] signal 'r15' is read in the process but is not in the sensitivity list [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:48]
-INFO: [Synth 8-256] done synthesizing module 'divider' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:10]
-INFO: [Synth 8-226] default block is never used [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:76]
-INFO: [Synth 8-256] done synthesizing module 'alu' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:11]
-INFO: [Synth 8-3491] module 'binary_to_bcd' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/binary_to_bcd.vhd:1' bound to instance 'BCD_CONV' of component 'binary_to_bcd' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:186]
+INFO: [Synth 8-3491] module 'multiplier' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:1' bound to instance 'MULT' of component 'multiplier' [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:126]
+INFO: [Synth 8-638] synthesizing module 'multiplier' [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'multiplier' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:17]
+INFO: [Synth 8-3491] module 'divider' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:1' bound to instance 'DIV_UNIT' of component 'divider' [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:139]
+INFO: [Synth 8-638] synthesizing module 'divider' [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'divider' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/divider.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'alu' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/alu_4bit.vhd:23]
+INFO: [Synth 8-3491] module 'binary_to_bcd' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/binary_to_bcd.vhd:1' bound to instance 'BCD_NORMAL' of component 'binary_to_bcd' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:332]
 INFO: [Synth 8-638] synthesizing module 'binary_to_bcd' [C:/git/Hardware-Engineering-Gr_A3/cpu/binary_to_bcd.vhd:11]
 INFO: [Synth 8-256] done synthesizing module 'binary_to_bcd' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/binary_to_bcd.vhd:11]
-INFO: [Synth 8-3491] module 'seven_segment_decoder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:2' bound to instance 'DEC_ONES' of component 'seven_segment_decoder' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:195]
+INFO: [Synth 8-3491] module 'binary_to_bcd' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/binary_to_bcd.vhd:1' bound to instance 'BCD_REM' of component 'binary_to_bcd' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:341]
+INFO: [Synth 8-3491] module 'seven_segment_decoder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:2' bound to instance 'DEC_ONES' of component 'seven_segment_decoder' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:350]
 INFO: [Synth 8-638] synthesizing module 'seven_segment_decoder' [C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:9]
 INFO: [Synth 8-226] default block is never used [C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:13]
 INFO: [Synth 8-256] done synthesizing module 'seven_segment_decoder' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:9]
-INFO: [Synth 8-3491] module 'seven_segment_decoder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:2' bound to instance 'DEC_TENS' of component 'seven_segment_decoder' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:201]
-INFO: [Synth 8-3491] module 'seven_segment_decoder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:2' bound to instance 'DEC_HUNDREDS' of component 'seven_segment_decoder' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:207]
-INFO: [Synth 8-256] done synthesizing module 'cpu_top' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:15]
-WARNING: [Synth 8-3936] Found unconnected internal register 'src_b_value_reg' and it is trimmed from '8' to '4' bits. [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:109]
-WARNING: [Synth 8-3936] Found unconnected internal register 'src_a_value_reg' and it is trimmed from '8' to '4' bits. [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:98]
+INFO: [Synth 8-3491] module 'seven_segment_decoder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:2' bound to instance 'DEC_TENS' of component 'seven_segment_decoder' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:356]
+INFO: [Synth 8-3491] module 'seven_segment_decoder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:2' bound to instance 'DEC_HUNDREDS' of component 'seven_segment_decoder' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:362]
+INFO: [Synth 8-3491] module 'seven_segment_decoder' declared at 'C:/git/Hardware-Engineering-Gr_A3/cpu/seven_segment_decoder.vhd:2' bound to instance 'DEC_REM_ONES' of component 'seven_segment_decoder' [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:368]
+INFO: [Synth 8-256] done synthesizing module 'cpu_top' (0#1) [C:/git/Hardware-Engineering-Gr_A3/cpu/cpu_top.vhd:16]
+WARNING: [Synth 8-6014] Unused sequential element a_mag_reg was removed.  [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:126]
+WARNING: [Synth 8-6014] Unused sequential element b_mag_reg was removed.  [C:/git/Hardware-Engineering-Gr_A3/cpu/multiplier_4bit.vhd:127]
 WARNING: [Synth 8-7129] Port sw[9] in module cpu_top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1305.387 ; gain = 601.445
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1318.898 ; gain = 617.352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1305.387 ; gain = 601.445
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1318.898 ; gain = 617.352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1305.387 ; gain = 601.445
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1318.898 ; gain = 617.352
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1305.387 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1318.898 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -137,93 +104,103 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/cpu_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1383.934 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1396.465 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1383.934 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1396.465 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1383.934 ; gain = 679.992
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1396.465 ; gain = 694.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1383.934 ; gain = 679.992
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1396.465 ; gain = 694.918
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1383.934 ; gain = 679.992
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1396.465 ; gain = 694.918
 ---------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Preparing Guide Design
----------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6895] The reference checkpoint C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.srcs/utils_1/imports/synth_1/cpu_top.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
----------------------------------------------------------------------------------
-Finished Doing Graph Differ : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1383.934 ; gain = 679.992
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Preparing Guide Design : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1383.934 ; gain = 679.992
----------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'multiplier'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'divider'
 INFO: [Synth 8-802] inferred FSM for state register 'display_select_reg' in module 'cpu_top'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                    "00" |                             0001 |                               00
-                    "01" |                             0010 |                               01
-                    "10" |                             0100 |                               10
-                  iSTATE |                             1000 |                               11
+                    idle |                              001 |                               00
+                    calc |                              010 |                               01
+              done_state |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'multiplier'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              001 |                               00
+                    calc |                              010 |                               01
+              done_state |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'divider'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    "00" |                               00 |                               00
+                    "01" |                               01 |                               01
+                    "10" |                               10 |                               10
+                  iSTATE |                               11 |                               11
 *
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'display_select_reg' using encoding 'one-hot' in module 'cpu_top'
+INFO: [Synth 8-3354] encoded FSM with state register 'display_select_reg' using encoding 'sequential' in module 'cpu_top'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1383.934 ; gain = 679.992
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1396.465 ; gain = 694.918
 ---------------------------------------------------------------------------------
-
-
-Incremental Synthesis Report Summary:
-
-1. Incremental synthesis run: no
-
-   Reason for not running incremental synthesis : 
-
-
-INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   3 Input   32 Bit       Adders := 1     
-	   2 Input   32 Bit       Adders := 1     
-	   4 Input   32 Bit       Adders := 1     
-	   2 Input   31 Bit       Adders := 1     
+	   3 Input   32 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 2     
+	   4 Input   32 Bit       Adders := 2     
+	   2 Input   31 Bit       Adders := 2     
 	   2 Input   16 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 1     
 +---XORs : 
-	   2 Input      1 Bit         XORs := 240   
+	   2 Input      1 Bit         XORs := 115   
+	   3 Input      1 Bit         XORs := 15    
 +---Registers : 
 	               16 Bit    Registers := 1     
-	                8 Bit    Registers := 4     
+	                8 Bit    Registers := 18    
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 20    
 +---Multipliers : 
-	               8x26  Multipliers := 1     
-	               5x32  Multipliers := 1     
+	               8x26  Multipliers := 2     
+	               5x32  Multipliers := 2     
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 2     
-	   2 Input   31 Bit        Muxes := 1     
-	   4 Input    8 Bit        Muxes := 3     
-	   3 Input    8 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 2     
-	   2 Input    7 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 4     
+	   2 Input   31 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 19    
+	   3 Input    8 Bit        Muxes := 8     
+	   4 Input    8 Bit        Muxes := 4     
+	   2 Input    7 Bit        Muxes := 8     
 	   3 Input    7 Bit        Muxes := 1     
-	   4 Input    7 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 18    
-	   4 Input    4 Bit        Muxes := 3     
-	   2 Input    2 Bit        Muxes := 2     
-	   4 Input    2 Bit        Muxes := 1     
-	   4 Input    1 Bit        Muxes := 5     
+	   4 Input    7 Bit        Muxes := 2     
+	   3 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 4     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 6     
+	   4 Input    2 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 65    
+	   3 Input    1 Bit        Muxes := 18    
+	   6 Input    1 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 9     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -245,27 +222,26 @@ WARNING: [Synth 8-3917] design cpu_top has port an[6] driven by constant 1
 WARNING: [Synth 8-3917] design cpu_top has port an[5] driven by constant 1
 WARNING: [Synth 8-3917] design cpu_top has port an[4] driven by constant 1
 WARNING: [Synth 8-7129] Port sw[9] in module cpu_top is either unconnected or has no load
-WARNING: [Synth 8-3332] Sequential element (FSM_onehot_display_select_reg[3]) is unused and will be removed from module cpu_top.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1467.461 ; gain = 763.520
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1407.527 ; gain = 705.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1519.988 ; gain = 816.047
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 1535.340 ; gain = 833.793
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1550.949 ; gain = 847.008
+Finished Timing Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1573.270 ; gain = 871.723
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1557.855 ; gain = 853.914
+Finished Technology Mapping : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1575.680 ; gain = 874.133
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -283,37 +259,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1766.332 ; gain = 1062.391
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1784.594 ; gain = 1083.047
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1766.332 ; gain = 1062.391
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1784.594 ; gain = 1083.047
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1766.332 ; gain = 1062.391
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1784.594 ; gain = 1083.047
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1766.332 ; gain = 1062.391
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1784.594 ; gain = 1083.047
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1766.332 ; gain = 1062.391
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1784.594 ; gain = 1083.047
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1766.332 ; gain = 1062.391
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1784.594 ; gain = 1083.047
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -330,44 +306,40 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     1|
-|2     |CARRY4 |   147|
-|3     |LUT1   |    22|
-|4     |LUT2   |   119|
-|5     |LUT3   |   135|
-|6     |LUT4   |   124|
-|7     |LUT5   |   204|
-|8     |LUT6   |   354|
-|9     |MUXF7  |    10|
-|10    |MUXF8  |     2|
-|11    |FDCE   |    50|
-|12    |FDPE   |     1|
-|13    |IBUF   |    12|
-|14    |OBUF   |    23|
+|2     |CARRY4 |   240|
+|3     |LUT1   |    24|
+|4     |LUT2   |   188|
+|5     |LUT3   |   226|
+|6     |LUT4   |   245|
+|7     |LUT5   |   485|
+|8     |LUT6   |   550|
+|9     |FDCE   |   195|
+|10    |FDPE   |     2|
+|11    |IBUF   |    12|
+|12    |OBUF   |    24|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1766.332 ; gain = 1062.391
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1784.594 ; gain = 1083.047
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 1 critical warnings and 7 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:37 . Memory (MB): peak = 1766.332 ; gain = 983.844
-Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1766.332 ; gain = 1062.391
+Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:36 . Memory (MB): peak = 1784.594 ; gain = 1005.480
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1784.594 ; gain = 1083.047
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1775.539 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 159 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1793.797 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 240 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-WARNING: [Netlist 29-101] Netlist 'cpu_top' is not ideal for floorplanning, since the cellview 'binary_to_bcd' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1779.230 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1797.426 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 7f8cf315
+Synth Design complete | Checksum: 2a7892ab
 INFO: [Common 17-83] Releasing license: Synthesis
-78 Infos, 27 Warnings, 1 Critical Warnings and 0 Errors encountered.
+66 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:45 . Memory (MB): peak = 1779.230 ; gain = 1277.934
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1779.230 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:44 . Memory (MB): peak = 1797.426 ; gain = 1298.020
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1797.426 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/git/Hardware-Engineering-Gr_A3/cpu/CPU_vivado/CPU_vivado.runs/synth_1/cpu_top.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file cpu_top_utilization_synth.rpt -pb cpu_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Jun 18 16:00:42 2026...
+INFO: [Common 17-206] Exiting Vivado at Tue Jun 23 17:53:12 2026...
