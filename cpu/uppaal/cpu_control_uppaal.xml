@@ -429,22 +429,32 @@ system CPU_CTRL, ALU_CTRL, MUL_FSM, DIV_FSM, DISP_FSM;
 		<query>
 			<formula>A[] not deadlock</formula>
 			<comment>The combined FSM model should never deadlock.</comment>
+			<result outcome="success" type="quality" timestamp="2026-06-23 20:52:20 +0200">
+			</result>
 		</query>
 		<query>
 			<formula>E&lt;&gt; CPU_CTRL.S_WRITEBACK</formula>
 			<comment>Writeback must be reachable after an execute operation.</comment>
+			<result outcome="success" type="quality" timestamp="2026-06-23 20:52:22 +0200">
+			</result>
 		</query>
 		<query>
 			<formula>A[] MUL_FSM.S_MUL_CALC imply MUL_FSM.m &lt;= 8</formula>
 			<comment>The multiplier calculation state is bounded to 8 model cycles.</comment>
+			<result outcome="success" type="quality" timestamp="2026-06-23 20:52:24 +0200">
+			</result>
 		</query>
 		<query>
 			<formula>A[] DIV_FSM.S_DIV_CALC imply DIV_FSM.v &lt;= 255</formula>
 			<comment>The repeated-subtraction divider calculation is bounded to 255 model cycles.</comment>
+			<result outcome="success" type="quality" timestamp="2026-06-23 20:52:26 +0200">
+			</result>
 		</query>
 		<query>
 			<formula>A[] CPU_CTRL.S_WAIT_ALU imply (ALU_CTRL.S_ALU_ADD_SUB or ALU_CTRL.S_ALU_WAIT_MUL or ALU_CTRL.S_ALU_WAIT_DIV or ALU_CTRL.S_ALU_DONE)</formula>
 			<comment>If the CPU waits for the ALU, the ALU controller must be busy or finishing.</comment>
+			<result outcome="failure" type="quality" timestamp="2026-06-23 20:52:32 +0200">
+			</result>
 		</query>
 	</queries>
 </nta>
